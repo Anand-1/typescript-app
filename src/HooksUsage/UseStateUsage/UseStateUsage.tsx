@@ -1,5 +1,6 @@
 // The React useState Hook allows us to track state in a function component.
 import React, { useState } from "react";
+import LeftBar from "../../LeftBar/LeftBar";
 
 const UseStateUsage = () => {
   const [count, setCount] = useState(0);
@@ -24,27 +25,34 @@ const UseStateUsage = () => {
   };
   return (
     <>
-      <h1>useState Usage</h1>
-      <h2>Count : {count}</h2>
-      <button type="button" onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
-      <button type="button" onClick={() => setCount(count - 1)}>
-        Decrement
-      </button>
-      <p>
-        It is a {car.color} {car.model} from {car.year}.
-      </p>
-      <button type="button" onClick={updateColor}>
-        Update my Car color
-      </button>
-      <button type="button" onClick={handleTodos}>
-        Update Todos
-      </button>
-      <div>
-        {todo.map((todo, index) => {
-          return <p key={index}>{todo}</p>;
-        })}
+      <div style={{ display: "flex" }}>
+        <div>
+          <LeftBar />
+        </div>
+        <div>
+          <h1>useState Usage</h1>
+          <h2>Count : {count}</h2>
+          <button type="button" onClick={() => setCount(count + 1)}>
+            Increment
+          </button>
+          <button type="button" onClick={() => setCount(count - 1)}>
+            Decrement
+          </button>
+          <p>
+            It is a {car.color} {car.model} from {car.year}.
+          </p>
+          <button type="button" onClick={updateColor}>
+            Update my Car color
+          </button>
+          <button type="button" onClick={handleTodos}>
+            Update Todos
+          </button>
+          <div>
+            {todo.map((todo, index) => {
+              return <p key={index}>{todo}</p>;
+            })}
+          </div>
+        </div>
       </div>
     </>
   );

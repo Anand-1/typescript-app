@@ -11,12 +11,14 @@ import CustomHooks from "./HooksUsage/CustomHooks/CustomHooks";
 import InfinitScroll from "./InfiniteScroll/InfiniteScroll";
 import UseReducerUnd from "./HooksUsage/UseReducers/UseReducerUnd";
 import HigherOrderComponent from "./HOC/HigherOrderComponent";
+import ReactQuery from "./ReactQuery/ReactQuery";
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<GrandParent />} />
+          <Route path="/" element={<UseStateUsage />} />
+          <Route path="/grandparent" element={<GrandParent />} />
           <Route path="/useStates" element={<UseStateUsage />} />
           <Route path="/useEffects" element={<UseEffectUsage />} />
           <Route path="/useRefs" element={<UserRefUsage />} />
@@ -26,6 +28,7 @@ function App() {
           <Route path="/usereducers" element={<UseReducerUnd />} />
           <Route path="/hoc" element={<HigherOrderComponent />}></Route>
           <Route path="/infiniteScroll" element={<InfinitScroll />} />
+          <Route path="/reactQuery" element={<ReactQuery />} />
         </Routes>
       </BrowserRouter>
     </div>
