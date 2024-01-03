@@ -12,6 +12,9 @@ import InfinitScroll from "./InfiniteScroll/InfiniteScroll";
 import UseReducerUnd from "./HooksUsage/UseReducers/UseReducerUnd";
 import HigherOrderComponent from "./HOC/HigherOrderComponent";
 import ReactQuery from "./ReactQuery/ReactQuery";
+import ReactPortals from "./ReactPortal/reactportals";
+import CancelAPI from "./CancelAPI/CancelAPI";
+import PromisesPage from "./PromisePage/PromisePage";
 function App() {
   return (
     <div className="App">
@@ -29,6 +32,9 @@ function App() {
           <Route path="/hoc" element={<HigherOrderComponent />}></Route>
           <Route path="/infiniteScroll" element={<InfinitScroll />} />
           <Route path="/reactQuery" element={<ReactQuery />} />
+          <Route path="/reactportals" element={<ReactPortals />} />
+          <Route path="/cancelAPI" element={<CancelAPI />} />
+          <Route path="/promisepage" element={<PromisesPage />} />
         </Routes>
       </BrowserRouter>
     </div>
