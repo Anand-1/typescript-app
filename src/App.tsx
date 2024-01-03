@@ -15,6 +15,8 @@ import ReactQuery from "./ReactQuery/ReactQuery";
 import ReactPortals from "./ReactPortal/reactportals";
 import CancelAPI from "./CancelAPI/CancelAPI";
 import PromisesPage from "./PromisePage/PromisePage";
+import ReactObjservables from "./ReactObservables/ReactObservables";
+
 function App() {
   return (
     <div className="App">
@@ -35,6 +37,7 @@ function App() {
           <Route path="/reactportals" element={<ReactPortals />} />
           <Route path="/cancelAPI" element={<CancelAPI />} />
           <Route path="/promisepage" element={<PromisesPage />} />
+          <Route path="/reactobservables" element={<ReactObjservables />} />
         </Routes>
       </BrowserRouter>
     </div>
