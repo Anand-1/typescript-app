@@ -10,12 +10,12 @@ import UseMemoUsage from "./HooksUsage/UseMemos/UseMemoUsage";
 import CustomHooks from "./HooksUsage/CustomHooks/CustomHooks";
 import InfinitScroll from "./InfiniteScroll/InfiniteScroll";
 import UseReducerUnd from "./HooksUsage/UseReducers/UseReducerUnd";
-import HigherOrderComponent from "./HOC/HigherOrderComponent";
 import ReactQuery from "./ReactQuery/ReactQuery";
 import ReactPortals from "./ReactPortal/reactportals";
 import CancelAPI from "./CancelAPI/CancelAPI";
 import PromisesPage from "./PromisePage/PromisePage";
 import ReactObjservables from "./ReactObservables/ReactObservables";
+import ProductsListWithSearch from "./HOC/ProductHOC/SearchCard";
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
           <Route path="/useMemos" element={<UseMemoUsage />} />
           <Route path="/useCustoms" element={<CustomHooks />} />
           <Route path="/usereducers" element={<UseReducerUnd />} />
-          <Route path="/hoc" element={<HigherOrderComponent />}></Route>
+          <Route path="/hoc" element={<ProductsListWithSearch />}></Route>
           <Route path="/infiniteScroll" element={<InfinitScroll />} />
           <Route path="/reactQuery" element={<ReactQuery />} />
           <Route path="/reactportals" element={<ReactPortals />} />

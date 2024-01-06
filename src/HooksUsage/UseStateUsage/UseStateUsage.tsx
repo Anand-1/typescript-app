@@ -15,7 +15,7 @@ const UseStateUsage = () => {
   // this would remove the brand, model, and year from our state.
   const updateColor = () => {
     setCar((prevState) => {
-      return { ...prevState, precolor: "blue" };
+      return { ...prevState, color: "blue" };
     });
   };
   const handleTodos = () => {

@@ -1,4 +1,5 @@
 // https://www.freecodecamp.org/news/beginners-guide-to-rxjs-redux-observables/
+//https://blog.logrocket.com/rxjs-react-hooks-for-state-management/
 
 /*
 Observers are objects that can subscribe to Observables and Subjects

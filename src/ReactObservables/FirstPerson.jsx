@@ -21,10 +21,10 @@ const FirstPerson = () => {
 
   return (
     <div className="container">
-      <h2>Mycroft</h2>
+      <h2>First Person</h2>
       <div className="chat-box">
-        {chatState.data.map((message) => (
-          <div>
+        {chatState.data.map((message, index) => (
+          <div key={index}>
             <p className={message.person}>{message.text}</p>
             <div className="clear"></div>
           </div>

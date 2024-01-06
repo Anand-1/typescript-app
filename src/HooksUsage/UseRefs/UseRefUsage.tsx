@@ -12,6 +12,7 @@ It can be used to access a DOM element directly.
   We can access the count by using count.current.
 */
 
+import React from "react";
 import { useState, useEffect, useRef } from "react";
 
 const UserRefUsage = () => {
@@ -21,12 +22,13 @@ const UserRefUsage = () => {
   useEffect(() => {
     count.current = count.current + 1;
   });
-  // For accessing dom elements
 
-  // const inputElement = useRef("");
+  // For accessing dom elements
+  const inputElement =
+    React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
   const focusInput = () => {
-    // inputElement.current.focus();
+    inputElement.current.focus();
   };
 
   // For tracking previous value
@@ -48,7 +50,7 @@ const UserRefUsage = () => {
       <h2>Current Value: {inputValue}</h2>
       <h2>Previous Value: {previousInputValue.current}</h2>
       {/* {for accessing dom elements} */}
-      {/* <input type="text" ref={inputElement} /> */}
+      <input type="text" ref={inputElement} />
       <button onClick={focusInput}>Focus Input</button>
     </>
   );

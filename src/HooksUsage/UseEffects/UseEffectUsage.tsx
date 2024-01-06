@@ -12,7 +12,9 @@ import React, { useEffect, useState } from "react";
 const useEffectUsage = () => {
   const [counter, setCounter] = useState(0);
   const [calculation, setCalculation] = useState(0);
+
   useEffect(() => {
+    console.log("useEffect 1");
     let timer = setTimeout(() => {
       setCounter((count) => count + 1);
     }, 1000);
@@ -23,8 +25,9 @@ const useEffectUsage = () => {
     };
   }, []);
   useEffect(() => {
+    console.log("useEffect 2");
     setCalculation(() => counter * 2);
-  }, [counter]); // <- add the count variable here
+  }); // <- add the count variable here
   return (
     <>
       <h1>UseEffect Usage</h1>

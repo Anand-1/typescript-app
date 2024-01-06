@@ -19,13 +19,13 @@ const SecondPerson = () => {
     chatStore.sendMessage(messageObject);
     document.getElementById("messageForm").reset();
   };
-
+  console.log(chatState);
   return (
     <div className="container">
-      <h2 style={{ float: "right" }}>Cortana</h2>
+      <h2 style={{ float: "right" }}>Second Person</h2>
       <div className="chat-box">
-        {chatState.data.map((message) => (
-          <div>
+        {chatState.data.map((message, index) => (
+          <div key={index}>
             <p className={message.person}>{message.text}</p>
             <div className="clear"></div>
           </div>
