@@ -22,7 +22,6 @@ const GrandParent = () => {
   return (
     <>
       <MyGlobalContext.Provider value={{ copy, setCopy }}>
-        {/* <MainNavigation /> */}
         <div className="Outermost-component">
           <div>
             <hr />

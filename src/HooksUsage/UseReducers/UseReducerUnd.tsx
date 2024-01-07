@@ -1,5 +1,4 @@
 import React, { useReducer } from "react";
-// import "./GrandParent.css";
 /* This is used for tracking multiple /custom state logic
    - it takes two arguments useReducer(<reducer>, <initialState>)
    - the reducer function contains your custom state logic and the 

@@ -16,6 +16,8 @@ import CancelAPI from "./CancelAPI/CancelAPI";
 import PromisesPage from "./PromisePage/PromisePage";
 import ReactObjservables from "./ReactObservables/ReactObservables";
 import ProductsListWithSearch from "./HOC/ProductHOC/SearchCard";
+import Landing from "./LazyLoading/Landing";
+import ErrorApp from "./ErrorBoundary/MyComponent";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
           <Route path="/cancelAPI" element={<CancelAPI />} />
           <Route path="/promisepage" element={<PromisesPage />} />
           <Route path="/reactobservables" element={<ReactObjservables />} />
+          <Route path="/lazyloading" element={<Landing />} />
+          <Route path="/errorboundary" element={<ErrorApp />} />
         </Routes>
       </BrowserRouter>
     </div>

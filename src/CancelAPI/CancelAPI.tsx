@@ -44,7 +44,7 @@ const ApiCallComponent = ({ redirectToOtherComponent }: any) => {
         });
     }, 5000);
     return () => controller.abort();
-  }, []);
+  }, [controller]);
 
   const redirect = () => {
     redirectToOtherComponent(true);
@@ -69,6 +69,3 @@ const CancelAPI = () => {
 };
 
 export default CancelAPI;
-function setResult(data: any): any {
-  throw new Error("Function not implemented.");
-}

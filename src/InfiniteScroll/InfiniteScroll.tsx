@@ -4,7 +4,7 @@ const InfinitScroll = () => {
   const [items, setItems] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<any>(null);
-  //   const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1);
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -12,13 +12,14 @@ const InfinitScroll = () => {
 
     try {
       const response = await fetch(
-        `https://jsonplaceholder.typicode.com/todos`
+        `https://jsonplaceholder.typicode.com/comments
+        `
       );
       const data = await response.json();
       console.log(data);
 
       setItems((prevItems) => [...prevItems, ...data]);
-      //   setPage((prevPage) => prevPage + 1);
+      setPage((prevPage) => prevPage + 1);
     } catch (error) {
       setError(error);
     } finally {
@@ -47,7 +48,9 @@ const InfinitScroll = () => {
     <div>
       <ul>
         {items.map((item) => (
-          <li key={item.id}>{item.name}</li>
+          <li key={item.id}>
+            {item.name} and email is {item.email}
+          </li>
         ))}
       </ul>
       {isLoading && <p>Loading...</p>}
