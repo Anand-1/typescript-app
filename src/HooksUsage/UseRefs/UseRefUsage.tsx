@@ -1,4 +1,3 @@
-//Note :  getting value is pending
 /*
 The useRef Hook allows you to persist values between renders.
 

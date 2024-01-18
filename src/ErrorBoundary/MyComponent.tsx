@@ -1,3 +1,4 @@
+// https://dev.to/edemagbenyo/handle-errors-in-react-components-like-a-pro-l7l
 import ErrorBoundary from "./ErrorBoundary";
 
 function MyComponent() {

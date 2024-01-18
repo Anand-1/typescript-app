@@ -18,6 +18,11 @@ import ReactObjservables from "./ReactObservables/ReactObservables";
 import ProductsListWithSearch from "./HOC/ProductHOC/SearchCard";
 import Landing from "./LazyLoading/Landing";
 import ErrorApp from "./ErrorBoundary/MyComponent";
+import HigherOrder from "./HOC/HigherOrder";
+import HigherOrder2 from "./HOC/HigherOrder2";
+import HigherOrder3 from "./HOC/HigherOrder3";
+import HigherOrderAuthentication from "./HOC/HigherOrderAuthentication";
+import Persons from "./HOC/PersonHOC/Persons";
 
 function App() {
   return (
@@ -42,6 +47,14 @@ function App() {
           <Route path="/reactobservables" element={<ReactObjservables />} />
           <Route path="/lazyloading" element={<Landing />} />
           <Route path="/errorboundary" element={<ErrorApp />} />
+          <Route path="/higherorder" element={<HigherOrder />} />
+          <Route path="/higherorder2" element={<HigherOrder2 />} />
+          <Route path="/higherorder3" element={<HigherOrder3 />} />
+          <Route
+            path="/higherorderAuthentication"
+            element={<HigherOrderAuthentication />}
+          />
+          <Route path="/hocPerson" element={<Persons />} />
         </Routes>
       </BrowserRouter>
     </div>
