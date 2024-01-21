@@ -23,6 +23,7 @@ import HigherOrder2 from "./HOC/HigherOrder2";
 import HigherOrder3 from "./HOC/HigherOrder3";
 import HigherOrderAuthentication from "./HOC/HigherOrderAuthentication";
 import Persons from "./HOC/PersonHOC/Persons";
+import ParentComponent from "./RenderProps/MouseTracker/ParentComponent";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
             element={<HigherOrderAuthentication />}
           />
           <Route path="/hocPerson" element={<Persons />} />
+          <Route path="/renderProps" element={<ParentComponent />} />
         </Routes>
       </BrowserRouter>
     </div>
