@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import GrandParent from "./HooksUsage/DataCommmunication/GrandParent/GrandParent";
 import UseStateUsage from "./HooksUsage/UseStateUsage/UseStateUsage";
@@ -24,11 +24,13 @@ import HigherOrder3 from "./HOC/HigherOrder3";
 import HigherOrderAuthentication from "./HOC/HigherOrderAuthentication";
 import Persons from "./HOC/PersonHOC/Persons";
 import ParentComponent from "./RenderProps/MouseTracker/ParentComponent";
+import BreadCrumbs from "./BreadCrumbs/BreadCrumbs";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <BreadCrumbs />
         <Routes>
           <Route path="/" element={<UseStateUsage />} />
           <Route path="/grandparent" element={<GrandParent />} />
