@@ -32,9 +32,8 @@ const AnotherComponent = () => {
 const ApiCallComponent = ({ redirectToOtherComponent }: any) => {
   const [result, setResult] = useState([]);
 
-  const controller = new AbortController();
-
   useEffect(() => {
+    const controller = new AbortController();
     setTimeout(() => {
       fetch("https://pokeapi.co/api/v2/pokemon/12")
         .then((res) => res.json())
@@ -44,7 +43,7 @@ const ApiCallComponent = ({ redirectToOtherComponent }: any) => {
         });
     }, 5000);
     return () => controller.abort();
-  }, [controller]);
+  }, []);
 
   const redirect = () => {
     redirectToOtherComponent(true);

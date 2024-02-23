@@ -6,7 +6,7 @@ cause a re-render when updated.
 
 It can be used to access a DOM element directly.
 - useRef() only returns one item.
- It returns an Object called current.
+  It returns an Object called current.
 - On useRef(0),it's like doing this: const count = {current: 0}.
   We can access the count by using count.current.
 */
@@ -22,6 +22,13 @@ const UserRefUsage = () => {
     count.current = count.current + 1;
   });
 
+  // For tracking previous value
+  const previousInputValue = useRef("");
+
+  useEffect(() => {
+    previousInputValue.current = inputValue;
+  }, [inputValue]);
+
   // For accessing dom elements
   const inputElement =
     React.useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -29,13 +36,6 @@ const UserRefUsage = () => {
   const focusInput = () => {
     inputElement.current.focus();
   };
-
-  // For tracking previous value
-  const previousInputValue = useRef("");
-
-  useEffect(() => {
-    previousInputValue.current = inputValue;
-  }, [inputValue]);
 
   return (
     <>

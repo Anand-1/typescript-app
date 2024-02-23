@@ -1,0 +1,28 @@
+* {
+  text-align: center;
+}
+
+.content-box {
+  background-color: aqua;
+  padding: 10%;
+  margin: 10%;
+}
+
+.heading-section {
+  background-color: blueviolet;
+  padding: 10px 0;
+  margin: 0;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 20px;
+  box-shadow: 0 5px;
+}
+
+button:hover {
+  font-size: medium;
+  transition: ease-in 0.5ms;
+  transition-delay: 0.1s;
+}

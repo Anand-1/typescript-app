@@ -17,6 +17,7 @@ const useEffectUsage = () => {
     console.log("useEffect 1");
     let timer = setTimeout(() => {
       setCounter((count) => count + 1);
+      setCalculation(() => counter * 2);
     }, 1000);
 
     // this is for clearing data
@@ -24,10 +25,6 @@ const useEffectUsage = () => {
       clearTimeout(timer);
     };
   }, []);
-  useEffect(() => {
-    console.log("useEffect 2");
-    setCalculation(() => counter * 2);
-  }); // <- add the count variable here
   return (
     <>
       <h1>UseEffect Usage</h1>

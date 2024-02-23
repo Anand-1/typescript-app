@@ -8,7 +8,6 @@ import UserRefUsage from "./HooksUsage/UseRefs/UseRefUsage";
 import UseCallBackUsage from "./HooksUsage/UseCallBacks/UseCallBackUsage";
 import UseMemoUsage from "./HooksUsage/UseMemos/UseMemoUsage";
 import CustomHooks from "./HooksUsage/CustomHooks/CustomHooks";
-import InfinitScroll from "./InfiniteScroll/InfiniteScroll";
 import UseReducerUnd from "./HooksUsage/UseReducers/UseReducerUnd";
 import ReactQuery from "./ReactQuery/ReactQuery";
 import ReactPortals from "./ReactPortal/reactportals";
@@ -42,7 +41,6 @@ function App() {
           <Route path="/useCustoms" element={<CustomHooks />} />
           <Route path="/usereducers" element={<UseReducerUnd />} />
           <Route path="/hoc" element={<ProductsListWithSearch />}></Route>
-          <Route path="/infiniteScroll" element={<InfinitScroll />} />
           <Route path="/reactQuery" element={<ReactQuery />} />
           <Route path="/reactportals" element={<ReactPortals />} />
           <Route path="/cancelAPI" element={<CancelAPI />} />

@@ -12,7 +12,11 @@ const ErrorBoundary = ({ children }: any) => {
   if (hasError) {
     return <FallbackUI />;
   }
-  return children;
+  return (
+    <>
+      <div>Normal Hai</div>
+    </>
+  );
 };
 
 const FallbackUI = () => {

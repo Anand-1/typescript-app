@@ -1,6 +1,6 @@
 // The React useState Hook allows us to track state in a function component.
 import React, { useState } from "react";
-import LeftBar from "../../LeftBar/LeftBar";
+import "./../styles.css";
 
 const UseStateUsage = () => {
   const [count, setCount] = useState(0);
@@ -25,18 +25,15 @@ const UseStateUsage = () => {
   };
   return (
     <>
-      <div style={{ display: "flex" }}>
-        <div>
-          <LeftBar />
-        </div>
-        <div>
-          <h1>useState Usage</h1>
+      <div>
+        <div className="content-box">
+          <h1 className="heading-section">useState Usage</h1>
           <h2>Count : {count}</h2>
           <button type="button" onClick={() => setCount(count + 1)}>
-            Increment
+            Increment 👆
           </button>
           <button type="button" onClick={() => setCount(count - 1)}>
-            Decrement
+            Decrement 👇
           </button>
           <p>
             It is a {car.color} {car.model} from {car.year}.
