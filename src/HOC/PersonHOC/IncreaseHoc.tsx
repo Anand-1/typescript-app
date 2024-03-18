@@ -6,7 +6,7 @@ const IncreaseHoc = (OriginalComponent: any) => {
     const handleIncrease = () => {
       setMoney((money: any) => money * 2);
     };
-    return <OriginalComponent handleIncrease={handleIncrease} money={money} />;
+    return <OriginalComponent z={handleIncrease} money={money} />;
   };
   return NewComponent;
 };

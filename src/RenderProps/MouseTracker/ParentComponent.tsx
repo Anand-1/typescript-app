@@ -1,6 +1,6 @@
-import React from "react";
 import MouseTracker from "./MouseTacker";
 import MousePositionDisplay from "./MousePositiondisplay";
+
 const ParentComponent = () => {
   return (
     <div>

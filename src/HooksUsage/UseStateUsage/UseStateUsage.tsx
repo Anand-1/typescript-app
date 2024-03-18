@@ -32,7 +32,10 @@ const UseStateUsage = () => {
           <button type="button" onClick={() => setCount(count + 1)}>
             Increment 👆
           </button>
-          <button type="button" onClick={() => setCount(count - 1)}>
+          <button
+            type="button"
+            onClick={() => (count <= 0 ? setCount(0) : setCount(count - 1))}
+          >
             Decrement 👇
           </button>
           <p>
