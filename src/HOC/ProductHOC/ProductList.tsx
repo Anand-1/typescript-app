@@ -1,6 +1,10 @@
-import ProductCard from "./ProductCard";
+import ProductCard, { Product } from "./ProductCard";
 
-const ProductsList = ({ products }: any) => {
+type ProductsListProps = {
+  products: Product[];
+};
+
+const ProductsList = ({ products }: ProductsListProps) => {
   return (
     <div>
       <div>
@@ -10,8 +14,8 @@ const ProductsList = ({ products }: any) => {
       </div>
       <div>
         {products &&
-          products.map((product: any) => (
-            <ProductCard key={product.id} {...product} />
+          products.map((product) => (
+            <ProductCard key={product.Id} {...product} />
           ))}
       </div>
     </div>

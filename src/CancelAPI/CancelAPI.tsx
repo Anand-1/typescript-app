@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 import axios from "axios";
+
+type PokemonResponse = {
+  name: string;
+};
+
 const AnotherComponent = () => {
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<PokemonResponse | null>(null);
   useEffect(() => {
     // More informations about the cancelation for the axios library here : https://github.com/axios/axios#cancellation
 
@@ -30,8 +35,14 @@ const AnotherComponent = () => {
   );
 };
 
-const ApiCallComponent = ({ redirectToOtherComponent }: any) => {
-  const [result, setResult] = useState<any>(null);
+type ApiCallComponentProps = {
+  redirectToOtherComponent: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const ApiCallComponent = ({
+  redirectToOtherComponent,
+}: ApiCallComponentProps) => {
+  const [result, setResult] = useState<PokemonResponse | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();

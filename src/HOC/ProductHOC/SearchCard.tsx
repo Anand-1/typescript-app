@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import ProductsList from "./ProductList";
-const products = require("./products.json");
+import productsData from "./products.json";
+import { Product } from "./ProductCard";
+
+const products: Product[] = productsData;
 
 const ProductsListWithSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredData, setfilteredData] = useState("");
+  const [filteredData, setfilteredData] = useState<Product[]>(products);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
@@ -12,7 +15,7 @@ const ProductsListWithSearch = () => {
   };
   const filteredProducts = (searchTerm: string) => {
     searchTerm = searchTerm.toUpperCase();
-    return products.filter((product: { Title: any }) => {
+    return products.filter((product) => {
       let str = `${product.Title}`.toUpperCase();
       return str.indexOf(searchTerm) >= 0;
     });

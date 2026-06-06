@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { ComponentType, useState } from "react";
 import { Link } from "react-router-dom";
 
+type AuthenticationProps = {
+  isAuthenticated: boolean;
+  onLogin: () => void;
+  onLogout: () => void;
+};
+
 // Higher Order Component (HOC)
-const withAuthentication = (WrappedComponent: any) => {
-  return function WithAuthentication(props: any) {
+const withAuthentication = <P extends object>(
+  WrappedComponent: ComponentType<P & AuthenticationProps>
+) => {
+  return function WithAuthentication(props: P) {
     const [authenticated, setAuthenticated] = useState(false);
 
     // Function to simulate a login (set authenticated to true)
@@ -34,7 +42,7 @@ const withAuthentication = (WrappedComponent: any) => {
 };
 
 // Original functional component
-const DashboardComponent = (props: any) => {
+const DashboardComponent = (props: AuthenticationProps) => {
   console.log("sd");
   // The original component displays the dashboard content
   return (

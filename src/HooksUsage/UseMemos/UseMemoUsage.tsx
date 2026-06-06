@@ -6,9 +6,7 @@ const UseMemoUsage = () => {
 
   // const calcualtion = expensiveCalc(count);
   // On change of count , calculation will not happen
-  const calculation: any = useMemo(() => {
-    expensiveCalc(count);
-  }, [count]);
+  const calculation = useMemo(() => expensiveCalc(count), [count]);
 
   const increment = () => {
     setCount((c) => c + 1);

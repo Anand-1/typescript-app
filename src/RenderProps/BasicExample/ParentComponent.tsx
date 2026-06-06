@@ -4,7 +4,7 @@ const ParentComponent = () => {
   return (
     <>
       <h1>Parent Component</h1>
-      <ChildComponent render={(data: any) => <p>Data from child: {data}</p>} />
+      <ChildComponent render={(data) => <p>Data from child: {data}</p>} />
     </>
   );
 };

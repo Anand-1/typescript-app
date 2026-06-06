@@ -4,7 +4,22 @@ import React, { useReducer } from "react";
    - the reducer function contains your custom state logic and the 
       
 */
-const initialTodos = [
+type Todo = {
+  id: number;
+  title?: string;
+  complete?: boolean;
+  react?: boolean;
+  graphQL?: boolean;
+  angular?: boolean;
+};
+
+type TodoAction =
+  | { type: "REACT" }
+  | { type: "GRAPHQL" }
+  | { type: "ANGULAR" }
+  | { type: "COMPLETE"; id: number };
+
+const initialTodos: Todo[] = [
   {
     id: 1,
     title: "Todo 1",
@@ -20,40 +35,21 @@ const initialTodos = [
   { id: 5, angular: false },
 ];
 
-const reducer = (state: any, action: any) => {
+const reducer = (state: Todo[], action: TodoAction): Todo[] => {
   console.log(action);
   switch (action.type) {
     case "REACT":
-      return state.map((todo: any) => {
-        if (todo.id === action.id) {
-          return { ...todo, react: true };
-        } else {
-          return todo;
-        }
-      });
+      return state.map((todo) => ({ ...todo, react: true }));
     case "GRAPHQL":
-      return state.map((todo: any) => {
-        if (todo.id === action.id) {
-          return { ...todo, graphQL: true };
-        } else {
-          return todo;
-        }
-      });
+      return state.map((todo) => ({ ...todo, graphQL: true }));
     case "ANGULAR":
-      return state.map((todo: any) => {
-        if (todo.id === action.id) {
-          return { ...todo, angular: true };
-        } else {
-          return todo;
-        }
-      });
+      return state.map((todo) => ({ ...todo, angular: true }));
     case "COMPLETE":
-      return state.map((todo: any) => {
+      return state.map((todo) => {
         if (todo.id === action.id) {
           return { ...todo, complete: !todo.complete };
-        } else {
-          return todo;
         }
+        return todo;
       });
     default:
       return state;
@@ -67,7 +63,7 @@ const UseReducerUnd = () => {
   // Given a set of inputs, it should always
   // return the same output. No surprises, side effects, API calls, mutations.
   const [todosInternal, dispatch] = useReducer(reducer, initialTodos);
-  const handleComplete = (todo: any) => {
+  const handleComplete = (todo: Todo) => {
     dispatch({ type: "COMPLETE", id: todo.id });
   };
   const handleReactPress = () => {
@@ -88,12 +84,12 @@ const UseReducerUnd = () => {
         </div>
         <br />
         <div>
-          {todosInternal.map((todo: any) => (
+          {todosInternal.map((todo) => (
             <div key={todo.id}>
               <label>
                 <input
                   type="checkbox"
-                  checked={todo.complete}
+                  checked={Boolean(todo.complete)}
                   onChange={() => handleComplete(todo)}
                 />
                 {todo.title}
@@ -105,7 +101,7 @@ const UseReducerUnd = () => {
 
       <div className="box">
         <h2>Use Reducer Example Component</h2>
-        Learn {""} {todosInternal.filter((data: any) => data.react === true)}
+        Learn React: {todosInternal.filter((data) => data.react).length}
         <div>
           <button
             type="button"

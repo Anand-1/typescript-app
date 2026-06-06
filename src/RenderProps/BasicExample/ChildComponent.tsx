@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
-const ChildComponent = ({ render }: any) => {
+type ChildComponentProps = {
+  render: (data: string) => ReactElement;
+};
+
+const ChildComponent = ({ render }: ChildComponentProps) => {
   const [internalData, setInternalData] = useState("Hello from child!");
   useEffect(() => {
     setInternalData("Data from UseEffect !");

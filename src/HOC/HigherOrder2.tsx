@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { ComponentType, useState, useEffect } from "react";
 
 // Higher Order Component (HOC)
-const withLoadingSpinner = (WrappedComponent: any) => {
-  return function WithLoadingSpinner(props: any) {
+const withLoadingSpinner = <P extends object>(
+  WrappedComponent: ComponentType<P>
+) => {
+  return function WithLoadingSpinner(props: P) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -30,7 +32,11 @@ const withLoadingSpinner = (WrappedComponent: any) => {
 };
 
 // Original functional component
-const MyDataComponent = (props: any) => {
+type MyDataComponentProps = {
+  data: string;
+};
+
+const MyDataComponent = (props: MyDataComponentProps) => {
   // The original component just displays some data
   return (
     <div>

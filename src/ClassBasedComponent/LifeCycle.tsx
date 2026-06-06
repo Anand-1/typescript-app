@@ -1,15 +1,25 @@
 import React from "react";
 
-class Header extends React.Component {
-  constructor(props: any) {
+type HeaderProps = {
+  favcol?: string;
+};
+
+type HeaderState = {
+  favoritecolor: string;
+};
+
+class Header extends React.Component<HeaderProps, HeaderState> {
+  constructor(props: HeaderProps) {
     super(props);
     this.state = { favoritecolor: "red" };
   }
-  static getDerivedStateFromProps(props: { favcol: any }, state: any) {
-    return { favoritecolor: props.favcol };
+
+  static getDerivedStateFromProps(props: HeaderProps) {
+    return { favoritecolor: props.favcol ?? "red" };
   }
+
   render() {
-    return <h1>My Favorite Color is red</h1>;
+    return <h1>My Favorite Color is {this.state.favoritecolor}</h1>;
   }
 }
 

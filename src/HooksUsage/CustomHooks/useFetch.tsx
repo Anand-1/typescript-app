@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
-const useFetch = (url: string) => {
-  const [data, setData] = useState<object[]>([]);
+const useFetch = <T,>(url: string): [T[]] => {
+  const [data, setData] = useState<T[]>([]);
+
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())

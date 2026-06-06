@@ -7,7 +7,7 @@ const ParentComponent = () => {
       <h1>Parent Component</h1>
       {/* Use MouseTracker with render prop */}
       <MouseTracker
-        render={(mousePosition: any) => (
+        render={(mousePosition) => (
           <MousePositionDisplay position={mousePosition} />
         )}
       />

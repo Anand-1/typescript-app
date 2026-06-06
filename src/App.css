@@ -1,3 +1,60 @@
 .App {
   text-align: center;
 }
+
+.breadcrumbs {
+  padding: 16px 24px;
+  text-align: left;
+}
+
+.home-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+}
+
+.home-header {
+  margin-bottom: 28px;
+}
+
+.home-header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.home-header p {
+  margin: 0;
+  color: #5f6570;
+  font-size: 16px;
+}
+
+.route-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.route-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid #cfd6df;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #172033;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.route-button:hover,
+.route-button:focus-visible {
+  border-color: #3f6fd9;
+  box-shadow: 0 8px 20px rgba(63, 111, 217, 0.14);
+  outline: none;
+  transform: translateY(-1px);
+}

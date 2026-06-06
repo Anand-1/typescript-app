@@ -1,11 +1,15 @@
 import React, { memo } from "react";
 import Child from "../Child/Child";
 
-const Parent = ({ todos }: any) => {
+type ParentProps = {
+  todos: string[];
+};
+
+const Parent = ({ todos }: ParentProps) => {
   return (
     <>
       <h2>Parent Component</h2>
-      {todos.map((todo: any, index: any) => {
+      {todos.map((todo, index) => {
         return <p key={index}>{todo}</p>;
       })}
 

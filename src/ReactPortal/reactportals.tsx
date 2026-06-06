@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
 const ReactPortals = () => {
-  const [visibility, setVisibility] = useState<any>("hidden");
+  const [visibility, setVisibility] = useState<"hidden" | "visible">("hidden");
   const handleclick = () => {
     if (visibility === "hidden") {
       setVisibility("visible");

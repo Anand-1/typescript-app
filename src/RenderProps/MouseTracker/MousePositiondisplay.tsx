@@ -1,6 +1,11 @@
 import React from "react";
+import { MousePosition } from "./MouseTacker";
 
-const MousePositionDisplay = ({ position }: any) => {
+type MousePositionDisplayProps = {
+  position: MousePosition;
+};
+
+const MousePositionDisplay = ({ position }: MousePositionDisplayProps) => {
   return (
     <>
       Mouse position: {position.x}, {position.y}

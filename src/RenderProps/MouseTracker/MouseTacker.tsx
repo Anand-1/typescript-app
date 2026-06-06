@@ -1,7 +1,17 @@
 import React, { useState } from "react";
-const MouseTracker = ({ render }: any) => {
+
+export type MousePosition = {
+  x: number;
+  y: number;
+};
+
+type MouseTrackerProps = {
+  render: (position: MousePosition) => React.ReactNode;
+};
+
+const MouseTracker = ({ render }: MouseTrackerProps) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const handleMouseMove = (event: any) => {
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     setPosition({ x: event.clientX, y: event.clientY });
   };
   return (

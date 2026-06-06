@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { ComponentType, useState } from "react";
 
-const IncreaseHoc = (OriginalComponent: any) => {
+export type IncreaseProps = {
+  handleIncrease: () => void;
+  money: number;
+};
+
+const IncreaseHoc = (OriginalComponent: ComponentType<IncreaseProps>) => {
   const NewComponent = () => {
     const [money, setMoney] = useState(1);
     const handleIncrease = () => {
-      setMoney((money: any) => money * 2);
+      setMoney((currentMoney) => currentMoney * 2);
     };
-    return <OriginalComponent z={handleIncrease} money={money} />;
+    return <OriginalComponent handleIncrease={handleIncrease} money={money} />;
   };
   return NewComponent;
 };

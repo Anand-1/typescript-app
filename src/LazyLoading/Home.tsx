@@ -1,8 +1,12 @@
 import React, { Suspense } from "react";
-const Customer: any = React.lazy(() => import("./Customer"));
-const Admin: any = React.lazy(() => import("./Admin"));
+const Customer = React.lazy(() => import("./Customer"));
+const Admin = React.lazy(() => import("./Admin"));
 
-const Home = ({ props }: any) => {
+type HomeProps = {
+  props: "admin" | "customer";
+};
+
+const Home = ({ props }: HomeProps) => {
   console.log(props);
   if (props === "admin") {
     return (

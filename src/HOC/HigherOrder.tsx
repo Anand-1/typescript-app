@@ -1,9 +1,17 @@
-import React from "react";
+import React, { ComponentType } from "react";
+
+type TextProps = {
+  text: string;
+};
+
+type UpperCaseProps = TextProps & {
+  uppercasedText: string;
+};
 
 // Higher Order Component (HOC) defined
-const withUpperCase = (WrappedComponent: any) => {
+const withUpperCase = (WrappedComponent: ComponentType<UpperCaseProps>) => {
   // This component enhances the passed component by converting its text to uppercase
-  return function WithUpperCase({ text }: any) {
+  return function WithUpperCase({ text }: TextProps) {
     // Enhance the props by adding a new prop called 'uppercasedText'
     const enhancedProps = {
       text,
@@ -16,7 +24,7 @@ const withUpperCase = (WrappedComponent: any) => {
 };
 
 // Original functional component
-const MyComponent = (props: any) => {
+const MyComponent = (props: UpperCaseProps) => {
   console.log(props);
   // The original component just displays the text passed as a prop
   return (

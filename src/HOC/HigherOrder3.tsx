@@ -1,13 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { ComponentType, useState, useEffect } from "react";
+
+type MousePosition = {
+  x: number;
+  y: number;
+};
+
+type WithMousePositionProps = {
+  mousePosition: MousePosition;
+};
 
 // Higher Order Component (HOC)
-const withMousePosition = (WrappedComponent: any) => {
-  return function WithMousePosition(props: any) {
+const withMousePosition = <P extends object>(
+  WrappedComponent: ComponentType<P & WithMousePositionProps>
+) => {
+  return function WithMousePosition(props: P) {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
       // Function to update mouse position
-      const updateMousePosition = (e: any) => {
+      const updateMousePosition = (e: MouseEvent) => {
         setMousePosition({ x: e.clientX, y: e.clientY });
       };
 
@@ -26,7 +37,7 @@ const withMousePosition = (WrappedComponent: any) => {
 };
 
 // Original functional component
-const MouseTrackerComponent = (props: any) => {
+const MouseTrackerComponent = (props: WithMousePositionProps) => {
   // The original component displays the current mouse position
   return (
     <div>
