@@ -96,16 +96,18 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <BreadCrumbs />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {appRoutes.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              element={route.element}
-            />
-          ))}
-        </Routes>
+        <main className="app-main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {appRoutes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={route.element}
+              />
+            ))}
+          </Routes>
+        </main>
       </BrowserRouter>
     </div>
   );
