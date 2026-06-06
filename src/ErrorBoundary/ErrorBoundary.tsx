@@ -1,23 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, ReactNode } from "react";
 
-const ErrorBoundary = ({ children }: any) => {
-  const [hasError, setHasError] = useState(false);
-
-  useEffect(() => {
-    if (hasError) {
-      console.log("Error Occurred !");
-    }
-  }, [hasError]);
-
-  if (hasError) {
-    return <FallbackUI />;
-  }
-  return (
-    <>
-      <div>Normal Hai</div>
-    </>
-  );
+type ErrorBoundaryProps = {
+  children: ReactNode;
 };
+
+type ErrorBoundaryState = {
+  hasError: boolean;
+};
+
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  state: ErrorBoundaryState = {
+    hasError: false,
+  };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch() {
+    console.log("Error Occurred !");
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <FallbackUI />;
+    }
+
+    return <>{this.props.children}</>;
+  }
+}
 
 const FallbackUI = () => {
   return (

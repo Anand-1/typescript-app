@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import axios from "axios";
 const AnotherComponent = () => {
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<any>(null);
   useEffect(() => {
     // More informations about the cancelation for the axios library here : https://github.com/axios/axios#cancellation
 
@@ -25,17 +25,20 @@ const AnotherComponent = () => {
   return (
     <>
       <h1>Another Componentt</h1>
+      {result?.name && <p>Pokemon: {result.name}</p>}
     </>
   );
 };
 
 const ApiCallComponent = ({ redirectToOtherComponent }: any) => {
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState<any>(null);
 
   useEffect(() => {
     const controller = new AbortController();
     setTimeout(() => {
-      fetch("https://pokeapi.co/api/v2/pokemon/12")
+      fetch("https://pokeapi.co/api/v2/pokemon/12", {
+        signal: controller.signal,
+      })
         .then((res) => res.json())
         .then((data) => setResult(data))
         .catch((err) => {
@@ -49,7 +52,12 @@ const ApiCallComponent = ({ redirectToOtherComponent }: any) => {
     redirectToOtherComponent(true);
   };
 
-  return <button onClick={redirect}> Let's call the APi </button>;
+  return (
+    <>
+      <button onClick={redirect}> Let's call the APi </button>
+      {result?.name && <p>Pokemon: {result.name}</p>}
+    </>
+  );
 };
 const CancelAPI = () => {
   const [apiCallDone, setApiCallDone] = useState(false);

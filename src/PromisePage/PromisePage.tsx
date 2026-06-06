@@ -33,10 +33,10 @@ function PromisesPage() {
         {state === "loading" ? (
           <h1>Loading...</h1>
         ) : (
-          <img alt="cat" src="catUrl" />
+          <img alt="cat" src={catUrl} />
         )}
       </div>
-      <button>New Cat?</button>
+      <button onClick={fetchCat}>New Cat?</button>
     </div>
   );
 }

@@ -16,7 +16,7 @@ const getCopy = (userType: string): string => {
 const GrandParent = () => {
   console.log("Grand Parent rendered");
 
-  const [todos, setTodos] = useState(["todo 1", "todo 2"]);
+  const [todos] = useState(["todo 1", "todo 2"]);
   const [copy, setCopy] = useState<string>(getCopy("Admin"));
 
   return (
