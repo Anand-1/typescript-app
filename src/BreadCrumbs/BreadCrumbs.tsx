@@ -3,13 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 
 const BreadCrumbs = () => {
   const location = useLocation();
+  console.log(location);
   const pathnames = location.pathname.split("/").filter((x) => x);
   let breadcrumbPath = "";
 
-  // if (pathnames.length === 0) {
-  //   // If the current route is the home route ('/'), do not render the breadcrumbs
-  //   return null;
-  // }
+  if (pathnames.length === 0) {
+    // If the current route is the home route ('/'), do not render the breadcrumbs
+    return null;
+  }
 
   return (
     <div className="breadcrumbs">
@@ -17,7 +18,6 @@ const BreadCrumbs = () => {
       {pathnames.map((name, index) => {
         breadcrumbPath += `/${name}`;
         const isLast = index === pathnames.length - 1;
-
         return isLast ? (
           <span key={breadcrumbPath}> / {name}</span>
         ) : (
