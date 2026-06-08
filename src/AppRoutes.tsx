@@ -21,6 +21,8 @@ import HigherOrder3 from "./HOC/HigherOrder3";
 import HigherOrderAuthentication from "./HOC/HigherOrderAuthentication";
 import Persons from "./HOC/PersonHOC/Persons";
 import ParentComponent from "./RenderProps/MouseTracker/ParentComponent";
+import Optimizations from "./Optimizations/Onptimizations";
+import LearningSlider from "./LearningSlider/LearningSlider";
 type AppRoute = {
   path: string;
   label: string;
@@ -67,4 +69,6 @@ export const appRoutes: AppRoute[] = [
   },
   { path: "/hocPerson", label: "Person HOC", element: <Persons /> },
   { path: "/renderProps", label: "Render Props", element: <ParentComponent /> },
+  { path: "/optimizations", label: "Optimizations", element: <Optimizations /> },
+  { path: "/learningSlider", label: "Learning Slider", element: <LearningSlider /> },
 ];
