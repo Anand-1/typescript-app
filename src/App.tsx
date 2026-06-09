@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
-import BreadCrumbs from "./Features/BreadCrumbs/BreadCrumbs";
+import BreadCrumbs from "./Features/BreadCrumbs";
 import { appRoutes } from "./AppRoutes";
 
 const Home = () => {

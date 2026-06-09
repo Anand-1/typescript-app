@@ -8,13 +8,11 @@ import GoogleSearchButton from "../Features/SearchOnGoogle";
 
 const LearningSlider = () => {
   const [dataIndex, setDataIndex] = React.useState(data[0]);
-  
   const handleNext = () => {
     if (dataIndex.id < data.length - 1) {       
       setDataIndex(data[dataIndex.id + 1]);
     }
   };
-  console.log(dataIndex);
   const handlePrevious = () => {
     if (dataIndex.id > 0) {
       setDataIndex(data[dataIndex.id - 1]);
