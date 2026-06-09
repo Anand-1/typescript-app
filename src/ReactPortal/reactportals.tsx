@@ -1,16 +1,12 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import  MyModal  from "../Features/Portals";
 
 const ReactPortals = () => {
-  const [visibility, setVisibility] = useState<"hidden" | "visible">("hidden");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const handleclick = () => {
-    if (visibility === "hidden") {
-      setVisibility("visible");
-    } else {
-      setVisibility("hidden");
-    }
-  };
-  console.log(visibility);
+    setIsOpen((prev) => !prev);
+  }
+  
   return (
     <>
       <h1>React Portals</h1>
@@ -20,18 +16,13 @@ const ReactPortals = () => {
       <button type="button" onClick={() => handleclick()}>
         Show / Hide
       </button>
-      <MyModal />
+      <MyModal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <h2>Modal Content</h2>
+        <p>This content is rendered outside the App component!</p>
+      </MyModal>
     </>
   );
 };
 
-const MyModal = () => {
-  return ReactDOM.createPortal(
-    <div className="modal">
-      <p>This is part of the modal</p>
-    </div>,
-    document.body
-  );
-};
 
 export default ReactPortals;

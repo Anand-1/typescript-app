@@ -6,9 +6,8 @@ import SnippitSlider from "./SnippetSlider";
 import Explanation from "./Explanation";
 
 const LearningSlider = () => {
-    
   const [dataIndex, setDataIndex] = React.useState(data[0]);
-
+  
   const handleNext = () => {
     if (dataIndex.id < data.length - 1) {       
       setDataIndex(data[dataIndex.id + 1]);

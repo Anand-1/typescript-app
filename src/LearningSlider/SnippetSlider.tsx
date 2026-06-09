@@ -1,6 +1,7 @@
 import React from "react";
-
+import MyModal from "../Features/Portals";
 const SnippitSlider = ({ data }: { data: any }) => {
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
   return (
     <div className="snippit-slider">
       <div className="code-container">
@@ -29,6 +30,16 @@ const SnippitSlider = ({ data }: { data: any }) => {
             try {
               const fn = new Function(code);
               fn();
+              let log = console.log;
+              log = function (...args) {
+                let data = log.bind(console, args);
+                alert(data);
+                const outputElem = document.getElementById("output");
+                if (outputElem) {
+                  outputElem.textContent += data + "\n";
+                }
+              };
+              setIsOpen(true);
             } catch (error) {
               console.error("Error executing code:", error);
             }
@@ -37,6 +48,10 @@ const SnippitSlider = ({ data }: { data: any }) => {
           Run
         </button>
         <button onClick={editCode}>Edit</button>
+        <MyModal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <h2>Modal Content</h2>
+        <p id="output">This content is rendered outside the App component!</p>
+      </MyModal>
       </div>
     </div>
   );
