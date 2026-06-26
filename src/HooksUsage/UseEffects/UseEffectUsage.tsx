@@ -30,10 +30,12 @@ const useEffectUsage = () => {
   }, [counter]);
   return (
     <>
-      <h1>UseEffect Usage</h1>
-      <h2>I've rendered {counter} times!</h2>
-      <button onClick={() => setCounter((c) => c + 1)}>+</button>
-      <p>Calculation: {calculation}</p>
+      <div className="section-1 section-padding">
+        <h1>UseEffect Usage</h1>
+        <h2>I've rendered {counter} times!</h2>
+        <button onClick={() => setCounter((c) => c + 1)}>+</button>
+        <p>Calculation: {calculation}</p>
+      </div>
     </>
   );
 };

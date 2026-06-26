@@ -16,11 +16,6 @@ import { useState, useEffect, useRef } from "react";
 
 const UserRefUsage = () => {
   const [inputValue, setInputValue] = useState("");
-  const count = useRef(0);
-
-  useEffect(() => {
-    count.current = count.current + 1;
-  });
 
   // For tracking previous value
   const previousInputValue = useRef("");
@@ -29,30 +24,51 @@ const UserRefUsage = () => {
     previousInputValue.current = inputValue;
   }, [inputValue]);
 
-  // For accessing dom elements
-  const inputElement =
-    React.useRef() as React.MutableRefObject<HTMLInputElement>;
-
-  const focusInput = () => {
-    inputElement.current.focus();
-  };
-
   return (
     <>
       <h1>useRef Usage</h1>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-      <h2>Render Count: {count.current}</h2>
-      <h2>Current Value: {inputValue}</h2>
-      <h2>Previous Value: {previousInputValue.current}</h2>
+      <div className="section-1 section-padding">
+        <RederCalc />
+      </div>
+      <div className="section-2 section-padding">
+        <FocusInput />
+      </div>
+      <div className="section-3 section-padding">
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <h2>Current Value: {inputValue}</h2>
+        <h2>Previous Value: {previousInputValue.current}</h2>
+      </div>
+    </>
+  );
+};
+
+const RederCalc = () => {
+  const count = useRef(0);
+
+  useEffect(() => {
+    count.current = count.current + 1;
+  });
+
+  return <h2>Render Count: {count.current}</h2>;
+};
+
+const FocusInput = () => {
+  // For accessing dom elements
+  const inputElement =
+    React.useRef() as React.MutableRefObject<HTMLInputElement>;
+  const focusInput = () => {
+    inputElement.current.focus();
+  };
+  return (
+    <>
       {/* {for accessing dom elements} */}
       <input type="text" ref={inputElement} />
       <button onClick={focusInput}>Focus Input</button>
     </>
   );
 };
-
 export default UserRefUsage;

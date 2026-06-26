@@ -24,6 +24,8 @@ const UseStateUsage = () => {
 };
 
 const Counter = () => {
+
+  console.log("------------------------------")
   console.log("Counter rendered");
   const [count, setCount] = useState(0);
   return (
@@ -78,6 +80,7 @@ const Todos = () => {
   return (
     <>
       {" "}
+
       <button type="button" onClick={handleTodos}>
         Update Todos
       </button>
