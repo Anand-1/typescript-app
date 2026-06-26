@@ -1,6 +1,5 @@
 import React, { useState, memo } from "react";
 import "./GrandParent.css";
-// import MainNavigation from "../MainNavigation/MainNavigation";
 import Parent from "../Parent/Parent";
 
 import { MyGlobalContext } from "../ContextUsage";

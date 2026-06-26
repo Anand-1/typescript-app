@@ -27,7 +27,6 @@ export default function GoogleSearchButton() {
             fontSize: '16px',
             borderRadius: '4px',
             border: '1px solid #ccc',
-            width: '250px'
           }}
         />
         <button

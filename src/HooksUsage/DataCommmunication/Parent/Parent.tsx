@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import Child from "../Child/Child";
 
-type ParentProps = {
+interface ParentProps{
   todos: string[];
 };
 
