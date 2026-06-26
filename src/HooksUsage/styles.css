@@ -12,3 +12,18 @@
 .content-box button {
   margin: 8px;
 }
+
+.section-1{
+ background-color: aqua;
+}
+
+.section-2{
+ background-color: azure;
+}
+.section-3{
+  background-color: blueviolet;
+}
+
+.section-padding{
+  padding: 20px;
+}

@@ -9,7 +9,8 @@ const Child = ({ todos }: ChildProps) => {
   const { copy, setCopy } = useGlobalContext();
   return (
     <>
-      <h2>Child Component</h2>
+      <div className="child-component">
+        <h2>Child Component</h2>
       <p>Copy Value : {copy}</p>
       {todos.map((todo, index) => {
         return <p key={index}>{todo}</p>;
@@ -17,6 +18,8 @@ const Child = ({ todos }: ChildProps) => {
 
       {/* part of useContext usage */}
       <button onClick={() => setCopy("This is a new copy")}>Click me!</button>
+      </div>
+      
     </>
   );
 };

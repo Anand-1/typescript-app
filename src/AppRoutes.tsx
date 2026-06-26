@@ -31,7 +31,7 @@ type AppRoute = {
 
 
 export const appRoutes: AppRoute[] = [
-  { path: "/grandparent", label: "Grand Parent", element: <GrandParent /> },
+  { path: "/grandparent", label: "Data Communication", element: <GrandParent /> },
   { path: "/useStates", label: "Use State", element: <UseStateUsage /> },
   { path: "/useEffects", label: "Use Effect", element: <UseEffectUsage /> },
   { path: "/useRefs", label: "Use Ref", element: <UserRefUsage /> },
