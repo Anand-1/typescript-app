@@ -1,0 +1,28 @@
+* Patterns in react
+
+React Design patterns are structural solutions that help developers solve recurring problems , enforce 
+separation of concern and build highly reusable UI components 
+
+Modern Fundamental patterns :
+=> Custom hooks Pattern : Extract stateful functions . It isolates business logic from the UI presentation 
+layer, enabling multiple components to share the same data .
+=> Provider pattern : Context -driven data injection . Uses react context api to broadcast data (like themes, 
+user sessions , localization ) down the components tree .
+=> Compound Components pattern: Implicit state collaborations 
+//revisit above one 
+=> Component Composition pattern : Nesting over hardcoding . Components recieves dynamic blocks through 
+children .
+=> Controlled & Uncontrolled components : Form management stratageis 
+
+
+Advanced and architectural patterns : 
+=> Container and presentational pattern : 'Smart' and 'Dumb' devision .
+=> Render props pattern : Dynamic UI function injection . A component accepts a function as a prop that 
+determines what UI to render , handling complete stylistic control to the consuming component.
+=> Erron Boundaries : declarative crash handling .
+
+Legacy Pattern : 
+Higher order component(HOC)
+
+=> Layout Components Pattern :
+=> Conditional Rendering pattern 

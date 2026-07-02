@@ -1,6 +1,5 @@
 import useFetch from "./useFetch";
 import "./CustomHooks.css";
-import "./../styles.css";
 
 type Todo = {
   id: number;
