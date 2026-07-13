@@ -23,6 +23,8 @@ import Persons from "./ReactPatterns/HOC/PersonHOC/Persons";
 import ParentComponent from "./ReactPatterns/RenderProps/MouseTracker/ParentComponent";
 import Optimizations from "./Optimizations/Onptimizations";
 import LearningSlider from "./LearningSlider/LearningSlider";
+import ImageSlider from "./ImageSlider/ImageSlider";
+import GenericCarouselDemo from "./Components/GenericCarouselDemo";
 type AppRoute = {
   path: string;
   label: string;
@@ -70,5 +72,7 @@ export const appRoutes: AppRoute[] = [
   { path: "/hocPerson", label: "Person HOC", element: <Persons /> },
   { path: "/renderProps", label: "Render Props", element: <ParentComponent /> },
   { path: "/optimizations", label: "Optimizations", element: <Optimizations /> },
-  { path: "/learningSlider", label: "Learning Slider", element: <LearningSlider /> },
+  { path: "/learningSlider", label: "Learning Carousel", element: <LearningSlider /> },
+  { path: "/imageSlider", label: "Image Carousel", element: <ImageSlider /> },
+  { path: "/genericCarousel", label: "Generic Carousel", element: <GenericCarouselDemo /> },
 ];

@@ -1,0 +1,52 @@
+.generic-carousel {
+  width: 100%;
+  max-width: 720px;
+}
+
+.generic-carousel-viewport {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.generic-carousel-track {
+  display: flex;
+  transition: transform 0.45s ease-in-out;
+}
+
+.generic-carousel-slide {
+  min-width: 100%;
+}
+
+.generic-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.generic-carousel-controls button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  background: #2563eb;
+  color: #fff;
+}
+
+.generic-carousel-dots {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.generic-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cbd5e1;
+}
+
+.generic-carousel-dot.active {
+  background: #2563eb;
+  transform: scale(1.15);
+}
