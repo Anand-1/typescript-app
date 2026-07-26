@@ -1,7 +1,6 @@
 # 🚀 React TypeScript Learning App
 
-A polished learning playground for React and TypeScript built with Create React App.
-This repository contains examples of hooks, class components, portals, custom hooks, error boundaries, lazy loading, and more.
+Project created to explore various React and Typescript features. This repository contains examples of hooks, class components, portals, custom hooks, error boundaries, lazy loading, and more.
 
 ---
 
