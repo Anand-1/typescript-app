@@ -1,3 +1,7 @@
+.content-grid{
+  display: grid;
+  
+}
 .content-box {
   background: var(--surface);
   padding: 24px;
