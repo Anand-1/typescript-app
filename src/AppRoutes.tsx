@@ -65,6 +65,7 @@ export const appRoutes: AppRoute[] = [
       },
       { path: "hocPerson", label: "Person HOC", element: <Persons /> },
       { path: "hoc", label: "Product HOC", element: <ProductsListWithSearch /> },
+      { path: "renderProps", label: "Render Props", element: <ParentComponent /> }
     ],
   },
   { path: "/reactQuery", label: "React Query", element: <ReactQuery /> },
@@ -78,7 +79,6 @@ export const appRoutes: AppRoute[] = [
   },
   { path: "/lazyloading", label: "Lazy Loading", element: <Landing /> },
   { path: "/errorboundary", label: "Error Boundary", element: <ErrorApp /> },
-  { path: "/renderProps", label: "Render Props", element: <ParentComponent /> },
   { path: "/optimizations", label: "Optimizations", element: <Optimizations /> },
   { path: "/learningSlider", label: "Learning Carousel", element: <LearningSlider /> },
   { path: "/imageSlider", label: "Image Carousel", element: <ImageSlider /> },

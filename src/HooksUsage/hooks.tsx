@@ -1,34 +1,12 @@
 import { ReactNode } from "react"
 import "./styles.css";
 import { Link, Outlet } from "react-router-dom";
-import UseStateUsage from "./UseStateUsage/UseStateUsage";
-import UseEffectUsage from "./UseEffects/UseEffectUsage";
-import UseCallBackUsage from "./UseCallBacks/UseCallBackUsage";
-import UseMemoUsage from "./UseMemos/UseMemoUsage";
-import CustomHooks from "./CustomHooks/CustomHooks";
-import UseReducerUnd from "./UseReducers/UseReducerUnd";
-import UserRefUsage from "./UseRefs/UseRefUsage";
-
-type HookRoute = {
-    path: string;
-    label: string;
-    element: ReactNode;
-};
+import { appRoutes } from "../AppRoutes";
 
 export const Hooks = () => {
+    const parent = appRoutes.find((r) => r.path === "/hooks/*");
+    const hookRoutes = parent?.children ?? [];
 
-    const hookRoutes: HookRoute[] = [
-        { path: "useStates", label: "Use State", element: <UseStateUsage /> },
-        { path: "useEffects", label: "Use Effect", element: <UseEffectUsage /> },
-        { path: "useRefs", label: "Use Ref", element: <UserRefUsage /> },
-        {
-            path: "useCallbacks",
-            label: "Use Callback",
-            element: <UseCallBackUsage />,
-        },
-        { path: "useMemos", label: "Use Memo", element: <UseMemoUsage /> },
-        { path: "useCustoms", label: "Custom Hooks", element: <CustomHooks /> },
-        { path: "usereducers", label: "Use Reducer", element: <UseReducerUnd /> },]
     return (
         <>
             <div className="content-grid">
@@ -43,7 +21,8 @@ export const Hooks = () => {
                 <div className="content-box">
                     <Outlet />
                 </div>
-            </div></>
+            </div>
+        </>
     )
 }
 
