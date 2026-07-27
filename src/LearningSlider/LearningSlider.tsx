@@ -4,7 +4,6 @@ import ButtonSlider from "./ButtonSlider";
 import data from "./LearningsData";
 import SnippitSlider from "./SnippetSlider";
 import Explanation from "./Explanation";
-import GoogleSearchButton from "../Features/SearchOnGoogle";
 
 const LearningSlider = () => {
   const [dataIndex, setDataIndex] = React.useState(data[0]);
@@ -27,7 +26,6 @@ const LearningSlider = () => {
       <div className="button-slider-container">
         {/* Cast props to any to satisfy TS when ButtonSlider has no typed props */}
         <ButtonSlider handlePrevious={handlePrevious}  />
-        <GoogleSearchButton />
         <ButtonSlider handleNext={handleNext} />
       </div>
       <Explanation explanation={dataIndex.explanation ?? ""} />

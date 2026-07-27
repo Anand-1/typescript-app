@@ -4,10 +4,8 @@ import ReactPortals from "./ReactPortal/reactportals";
 import CancelAPI from "./CancelAPI/CancelAPI";
 import PromisesPage from "./PromisePage/PromisePage";
 import ReactObjservables from "./ReactObservables/ReactObservables";
-import Landing from "./LazyLoading/Landing";
 import ErrorApp from "./ReactPatterns/ErrorBoundary/MyComponent";
 import ParentComponent from "./ReactPatterns/RenderProps/MouseTracker/ParentComponent";
-import Optimizations from "./Optimizations/Onptimizations";
 import LearningSlider from "./LearningSlider/LearningSlider";
 import ImageSlider from "./ImageSlider/ImageSlider";
 import GenericCarouselDemo from "./Components/GenericCarouselDemo";
@@ -77,9 +75,7 @@ export const appRoutes: AppRoute[] = [
     label: "React Observables",
     element: <ReactObjservables />,
   },
-  { path: "/lazyloading", label: "Lazy Loading", element: <Landing /> },
   { path: "/errorboundary", label: "Error Boundary", element: <ErrorApp /> },
-  { path: "/optimizations", label: "Optimizations", element: <Optimizations /> },
   { path: "/learningSlider", label: "Learning Carousel", element: <LearningSlider /> },
   { path: "/imageSlider", label: "Image Carousel", element: <ImageSlider /> },
   { path: "/genericCarousel", label: "Generic Carousel", element: <GenericCarouselDemo /> },
