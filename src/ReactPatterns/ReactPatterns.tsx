@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import "../HooksUsage/styles.css";
 import HigherOrder from "./HOC/HigherOrder";
 import HigherOrder2 from "./HOC/HigherOrder2";
 import HigherOrder3 from "./HOC/HigherOrder3";
@@ -32,27 +33,21 @@ export const ReactPatterns = () => {
         }]
 
     return (
-        <><h1>
-            Hooks
-        </h1>
+        <>
+            <h1>React Patterns</h1>
             <div className="content-grid">
-                <div>
+                <nav className="nav-column">
                     {patternRoutes.map((route) => (
                         <Link className="route-button" key={route.path} to={route.path}>
                             {route.label}
                         </Link>
                     ))}
-                </div>
+                </nav>
 
-                <Routes>
-                    {patternRoutes.map((route) => (
-                        <Route
-                            key={route.path}
-                            path={route.path}
-                            element={route.element}
-                        />
-                    ))}
-                </Routes>
-            </div></>
+                <div className="content-box">
+                    <Outlet />
+                </div>
+            </div>
+        </>
     )
 }

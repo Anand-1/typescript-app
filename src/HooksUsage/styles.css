@@ -1,11 +1,28 @@
 .content-grid{
-  display: grid;
-  
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 24px;
+}
+.content-grid > div:first-child{
+  min-width: 200px;
+}
+.nav-column {
+  position: sticky;
+  top: 88px;
+  align-self: flex-start;
+  min-width: 200px;
+}
+.nav-column .route-button{
+  display: block;
+  margin: 8px 0;
 }
 .content-box {
-  background: var(--surface);
-  padding: 24px;
-  margin: 18px auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(16,24,40,0.06);
+  flex: 1 1 auto;
 }
 
 .heading-section {
@@ -18,14 +35,14 @@
 }
 
 .section-1{
- background-color: aqua;
+ background-color: #e6f7ff;
 }
 
 .section-2{
- background-color: azure;
+ background-color: #f8fafc;
 }
 .section-3{
-  background-color: blueviolet;
+  background-color: #ede9fe;
 }
 
 .section-padding{

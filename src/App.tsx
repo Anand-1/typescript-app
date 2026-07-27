@@ -30,13 +30,17 @@ function App() {
         <main className="app-main">
           <Routes>
             <Route path="/" element={<Home />} />
-            {appRoutes.map((route) => (
-              <Route
-                key={route.path}
-                path={route.path}
-                element={route.element}
-              />
-            ))}
+            {appRoutes.map((route) =>
+              route.children ? (
+                <Route key={route.path} path={route.path} element={route.element}>
+                  {route.children.map((child) => (
+                    <Route key={`${route.path}-${child.path}`} path={child.path} element={child.element} />
+                  ))}
+                </Route>
+              ) : (
+                <Route key={route.path} path={route.path} element={route.element} />
+              )
+            )}
           </Routes>
         </main>
       </BrowserRouter>

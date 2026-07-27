@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
-import { Link, Route, Routes } from "react-router-dom";
+import "./styles.css";
+import { Link, Outlet } from "react-router-dom";
 import UseStateUsage from "./UseStateUsage/UseStateUsage";
 import UseEffectUsage from "./UseEffects/UseEffectUsage";
 import UseCallBackUsage from "./UseCallBacks/UseCallBackUsage";
@@ -29,27 +30,19 @@ export const Hooks = () => {
         { path: "useCustoms", label: "Custom Hooks", element: <CustomHooks /> },
         { path: "usereducers", label: "Use Reducer", element: <UseReducerUnd /> },]
     return (
-        <><h1>
-            Hooks
-        </h1>
+        <>
             <div className="content-grid">
-                <div>
+                <nav className="nav-column">
                     {hookRoutes.map((route) => (
                         <Link className="route-button" key={route.path} to={route.path}>
                             {route.label}
                         </Link>
                     ))}
-                </div>
+                </nav>
 
-                <Routes>
-                    {hookRoutes.map((route) => (
-                        <Route
-                            key={route.path}
-                            path={route.path}
-                            element={route.element}
-                        />
-                    ))}
-                </Routes>
+                <div className="content-box">
+                    <Outlet />
+                </div>
             </div></>
     )
 }
