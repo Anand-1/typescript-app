@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import ReactQuery from "./ReactQuery/ReactQuery";
 import ReactPortals from "./ReactPortal/reactportals";
-import CancelAPI from "./CancelAPI/CancelAPI";
 import PromisesPage from "./PromisePage/PromisePage";
 import ReactObjservables from "./ReactObservables/ReactObservables";
 import ErrorApp from "./ReactPatterns/ErrorBoundary/MyComponent";
@@ -68,7 +67,6 @@ export const appRoutes: AppRoute[] = [
   },
   { path: "/reactQuery", label: "React Query", element: <ReactQuery /> },
   { path: "/reactportals", label: "React Portals", element: <ReactPortals /> },
-  { path: "/cancelAPI", label: "Cancel API", element: <CancelAPI /> },
   { path: "/promisepage", label: "Promise Page", element: <PromisesPage /> },
   {
     path: "/reactobservables",

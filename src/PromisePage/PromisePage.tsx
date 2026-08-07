@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import  Idata from "./Idata";
 function PromisesPage() {
@@ -8,10 +7,8 @@ function PromisesPage() {
 
   function fetchCat() {
     setState("loading");
-    axios
-      .get("https://cataas.com/cat?json=true")
+    fetch("https://cataas.com/cat?json=true")
       .then((res) => {
-        console.log(res.data.url);
         setState("success");
         setCatUrl("https://cataas.com/cat");
       })
@@ -25,12 +22,12 @@ function PromisesPage() {
   const fetchData = () => {
     setState("loading");
     // Map the array of IDs to an array of Axios promise requests
-    const requests = Idata.map((item) => axios.get(`${item.url}`));
+    const requests = Idata.map((item) => fetch(`${item.url}`));
 
     Promise.all(requests)
       .then((responses) => {
         responses.forEach((response) => {
-          console.log("User Data:", response.data);
+          console.log("User Data:", response);
            setState("success");
         });
       })
