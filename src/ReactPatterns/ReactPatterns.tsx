@@ -1,14 +1,7 @@
-import { ReactNode } from "react"
 import { Link, Outlet } from "react-router-dom";
 import "../HooksUsage/styles.css";
 import { appRoutes } from "../AppRoutes";
 
-
-type PattternRoute = {
-    path: string;
-    label: string;
-    element: ReactNode;
-};
 
 export const ReactPatterns = () => {
     const parent = appRoutes.find((r) => r.path === "/reactpatterns/*");

@@ -23,6 +23,7 @@ import HigherOrder3 from "./ReactPatterns/HOC/HigherOrder3";
 import HigherOrderAuthentication from "./ReactPatterns/HOC/HigherOrderAuthentication";
 import Persons from "./ReactPatterns/HOC/PersonHOC/Persons";
 import ProductsListWithSearch from "./ReactPatterns/HOC/ProductHOC/SearchCard";
+import AssumptionsEntry from "./AssumptionsDaily/AssumptionsEntry";
 
 type AppRoute = {
   path: string;
@@ -77,4 +78,5 @@ export const appRoutes: AppRoute[] = [
   { path: "/learningSlider", label: "Learning Carousel", element: <LearningSlider /> },
   { path: "/imageSlider", label: "Image Carousel", element: <ImageSlider /> },
   { path: "/genericCarousel", label: "Generic Carousel", element: <GenericCarouselDemo /> },
+  { path: "/assumptions", label: "Assumptions Form", element: <AssumptionsEntry /> },
 ];

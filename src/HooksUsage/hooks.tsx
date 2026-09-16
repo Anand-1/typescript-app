@@ -1,4 +1,3 @@
-import { ReactNode } from "react"
 import "./styles.css";
 import { Link, Outlet } from "react-router-dom";
 import { appRoutes } from "../AppRoutes";
