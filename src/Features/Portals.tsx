@@ -1,5 +1,9 @@
 import { createPortal } from "react-dom";
+
+// Portal component pattern: render children outside the parent DOM hierarchy
+// while keeping normal React ownership and props.
 const MyModal = ({ children, isOpen, onClose }: { children: React.ReactNode; isOpen: boolean; onClose: () => void }) => {
+    // Conditional mount pattern: closed modals return null so no overlay exists in the DOM.
     if (!isOpen) return null;
 
   return createPortal(
@@ -28,6 +32,7 @@ const MyModal = ({ children, isOpen, onClose }: { children: React.ReactNode; isO
         <button onClick={onClose}>Close</button>
       </div>
     </div>,
+    // document.body target pattern: useful for overlays that must escape parent stacking/overflow styles.
     document.body
     )
 };

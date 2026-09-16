@@ -8,7 +8,8 @@ type UpperCaseProps = TextProps & {
   uppercasedText: string;
 };
 
-// Higher Order Component (HOC) defined
+// Higher Order Component (HOC) pattern: accept a component and return a new
+// component that injects additional props.
 const withUpperCase = (WrappedComponent: ComponentType<UpperCaseProps>) => {
   // This component enhances the passed component by converting its text to uppercase
   return function WithUpperCase({ text }: TextProps) {
@@ -26,7 +27,7 @@ const withUpperCase = (WrappedComponent: ComponentType<UpperCaseProps>) => {
 // Original functional component
 const MyComponent = (props: UpperCaseProps) => {
   console.log(props);
-  // The original component just displays the text passed as a prop
+  // Presentational component pattern: this component only renders the props it receives.
   return (
     <div>
       <p>Original Text: {props.text}</p>
@@ -35,7 +36,7 @@ const MyComponent = (props: UpperCaseProps) => {
   );
 };
 
-// Enhance the original component with the HOC
+// Composition pattern: the enhanced component is created once and used like a normal component.
 const MyEnhancedComponent = withUpperCase(MyComponent);
 
 // Usage of the enhanced component

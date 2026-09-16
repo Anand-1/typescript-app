@@ -25,6 +25,8 @@ import Persons from "./ReactPatterns/HOC/PersonHOC/Persons";
 import ProductsListWithSearch from "./ReactPatterns/HOC/ProductHOC/SearchCard";
 import AssumptionsEntry from "./AssumptionsDaily/AssumptionsEntry";
 
+// Typed route configuration pattern: each route owns the URL segment, display
+// label, element, and optional nested child routes in one reusable structure.
 type AppRoute = {
   path: string;
   label: string;
@@ -34,6 +36,7 @@ type AppRoute = {
 
 
 export const appRoutes: AppRoute[] = [
+  // Nested route group: the parent component renders the section menu and an <Outlet />.
   {
     path: "/hooks/*",
     label: "Hooks Usages",
@@ -48,6 +51,7 @@ export const appRoutes: AppRoute[] = [
       { path: "usereducers", label: "Use Reducer", element: <UseReducerUnd /> },
     ],
   },
+  // Pattern catalogue group: each child route isolates a specific React composition technique.
   {
     path: "/reactpatterns/*",
     label: "React patterns",

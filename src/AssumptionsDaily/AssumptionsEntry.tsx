@@ -6,6 +6,8 @@ type AssumptionFormValues = {
   inference: string;
 };
 
+// Minimal Formik-like helper types: the file models the render-props API shape
+// without importing the external Formik components.
 type FormikHelpers<V> = {
   setSubmitting: (isSubmitting: boolean) => void;
   resetForm: () => void;
@@ -28,10 +30,12 @@ type FormikProps<V> = {
 };
 
 const Formik = <V extends Record<string, any>>({ initialValues, onSubmit, children }: FormikProps<V>) => {
+  // Form state pattern: values and submission status are owned by the form controller.
   const [values, setValues] = React.useState<V>(initialValues);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    // Generic controlled-field pattern: input name selects which value field to update.
     const { name, value } = event.target;
     setValues((currentValues) => ({
       ...currentValues,
@@ -46,6 +50,7 @@ const Formik = <V extends Record<string, any>>({ initialValues, onSubmit, childr
   };
 
   const handleSubmit = async (event?: FormEvent<HTMLFormElement>) => {
+    // Submit orchestration pattern: prevent browser submit, call user handler, then reset status.
     event?.preventDefault();
     setIsSubmitting(true);
 
@@ -70,6 +75,7 @@ const Formik = <V extends Record<string, any>>({ initialValues, onSubmit, childr
   };
 
   if (typeof children === "function") {
+    // Render props pattern: expose form state and handlers to the caller's JSX function.
     return <>{(children as (props: FormikRenderProps<V>) => React.ReactNode)(formikProps)}</>;
   }
 
@@ -77,6 +83,7 @@ const Formik = <V extends Record<string, any>>({ initialValues, onSubmit, childr
 };
 
 const Form = ({ children, onSubmit, ...props }: React.FormHTMLAttributes<HTMLFormElement>) => {
+  // Thin wrapper pattern: keep the public API similar to Formik's <Form>.
   return <form onSubmit={onSubmit} {...props}>{children}</form>;
 };
 
@@ -92,6 +99,7 @@ const Field = ({
   placeholder,
   ...props
 }: any) => {
+  // Field abstraction pattern: share input props and switch element type with the `as` prop.
   const commonProps = {
     id,
     name,
@@ -111,6 +119,7 @@ const Field = ({
 };
 
 const AssumptionsEntry = () => {
+  // Initial values pattern: one object defines the shape and defaults for the form.
   const initialValues: AssumptionFormValues = {
     assumption: "",
     action: "",
@@ -118,12 +127,14 @@ const AssumptionsEntry = () => {
   };
 
   const submitPayload = async (values: AssumptionFormValues) => {
+    // Payload mapping pattern: add metadata at submit time instead of storing it in form state.
     const payload = {
       ...values,
       timestamp: new Date().toISOString(),
     };
 
     const response = await fetch("http://127.0.0.1:8000/results", {
+      // API integration pattern: serialize form state into a JSON POST body.
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -146,6 +157,7 @@ const AssumptionsEntry = () => {
         initialValues={initialValues}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
+            // Submit success pattern: persist, then reset the controlled form.
             await submitPayload(values);
             resetForm();
           } catch (error) {

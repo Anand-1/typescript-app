@@ -1,6 +1,7 @@
 import React from "react";
 import IncreaseHoc, { IncreaseProps } from "./IncreaseHoc";
 
+// Presentational component pattern: Person2 reuses the same injected HOC props as Person1.
 const Person2 = ({ handleIncrease, money }: IncreaseProps) => {
   return (
     <>
@@ -12,4 +13,5 @@ const Person2 = ({ handleIncrease, money }: IncreaseProps) => {
   );
 };
 
+// HOC composition pattern: Person2 gets its own independent wrapped state instance.
 export default IncreaseHoc(Person2);

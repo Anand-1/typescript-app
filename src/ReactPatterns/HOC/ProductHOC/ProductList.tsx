@@ -4,6 +4,7 @@ type ProductsListProps = {
   products: Product[];
 };
 
+// Presentational list pattern: receives already-filtered data and maps it to cards.
 const ProductsList = ({ products }: ProductsListProps) => {
   return (
     <div>
@@ -15,6 +16,7 @@ const ProductsList = ({ products }: ProductsListProps) => {
       <div>
         {products &&
           products.map((product) => (
+            // Prop spreading pattern: Product fields match ProductCard props exactly.
             <ProductCard key={product.Id} {...product} />
           ))}
       </div>

@@ -7,6 +7,7 @@ const initialState: CounterState = {
   value: 0,
 };
 
+// Reducer pattern: return new state objects instead of mutating the existing state.
 export const counterReducer = (
   state = initialState,
   action: CounterAction

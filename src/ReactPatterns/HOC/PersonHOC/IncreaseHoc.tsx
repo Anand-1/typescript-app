@@ -5,6 +5,8 @@ export type IncreaseProps = {
   money: number;
 };
 
+// HOC state-sharing pattern: wrap different presentational components with the
+// same money state and increment behavior.
 const IncreaseHoc = (OriginalComponent: ComponentType<IncreaseProps>) => {
   const NewComponent = () => {
     const [money, setMoney] = useState(1);

@@ -7,6 +7,7 @@ type Slide = {
   image: string;
 };
 
+// Static data pattern: slides are declared outside the component so they are not recreated per render.
 const slides: Slide[] = [
   {
     title: "Mountain Morning",
@@ -59,6 +60,7 @@ const slides: Slide[] = [
 ];
 
 const ImageSlider = () => {
+  // Carousel state pattern: activeIndex, fullscreen, and pause state independently model UI behavior.
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [isFullScreen, setIsFullScreen] = React.useState(false);
   const [isPaused, setIsPaused] = React.useState(false);
@@ -66,14 +68,17 @@ const ImageSlider = () => {
   const touchEndX = React.useRef<number | null>(null);
 
   const goToPrevious = () => {
+    // Wrap-around navigation pattern: going backward from first slide moves to the last slide.
     setActiveIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
   const goToNext = () => {
+    // Wrap-around navigation pattern: going forward from last slide moves to the first slide.
     setActiveIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    // Keyboard interaction pattern: make the carousel operable without pointer input.
     if (event.key === "ArrowLeft") {
       event.preventDefault();
       goToPrevious();
@@ -104,6 +109,7 @@ const ImageSlider = () => {
 
     const delta = touchStartX.current - touchEndX.current;
 
+    // Touch interaction pattern: horizontal swipe distance controls slide navigation.
     if (delta > 50) {
       goToNext();
     } else if (delta < -50) {
@@ -115,6 +121,7 @@ const ImageSlider = () => {
   };
 
   React.useEffect(() => {
+    // Autoplay effect pattern: advance slides on an interval, paused by hover/focus.
     if (isPaused) {
       return undefined;
     }

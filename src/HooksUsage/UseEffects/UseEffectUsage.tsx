@@ -10,22 +10,26 @@ useEffect(<function>, <dependency>)
 import React, { useEffect, useState } from "react";
 
 const useEffectUsage = () => {
+  // useState owns render state; useEffect below coordinates side effects that
+  // happen after rendering.
   const [counter, setCounter] = useState(0);
   const [calculation, setCalculation] = useState(0);
 
   useEffect(() => {
     console.log("useEffect 1");
+    // Timer side effect pattern: create the timer inside the effect.
     let timer = setTimeout(() => {
       setCounter((count) => count + 1);
     }, 1000);
 
-    // this is for clearing data
+    // Cleanup pattern: clear the timer if the component unmounts before it fires.
     return () => {
       clearTimeout(timer);
     };
   }, []);
 
   useEffect(() => {
+    // Derived state pattern: calculation is recomputed only when counter changes.
     setCalculation(counter * 2);
   }, [counter]);
   return (

@@ -71,6 +71,7 @@ const GenericCarouselDemo = () => {
         items={demoItems}
         autoPlay
         interval={4000}
+        // Custom renderer pattern: the generic carousel owns movement, this callback owns slide UI.
         renderItem={(item) => (
           <div style={{ background: "#fff", borderRadius: "16px", overflow: "hidden", boxShadow: "0 12px 30px rgba(15, 23, 42, 0.12)" }}>
             <img src={item.image} alt={item.title} style={{ width: "100%", height: "320px", objectFit: "cover", display: "block" }} />

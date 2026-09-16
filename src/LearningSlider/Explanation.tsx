@@ -5,17 +5,20 @@ type Props = {
 };
 
 const Explanation: React.FC<Props> = ({ explanation }) => {
+  // Disclosure state pattern: keep long explanation text hidden until the user asks for it.
   const [showExplanation, setShowExplanation] = React.useState<boolean>(false);
   const toggleExplanation = () => {
     setShowExplanation(!showExplanation);
   };
 
   const copyExplanation = () => {
+    // Clipboard API pattern: copy read-only explanation text for reuse outside the app.
     navigator.clipboard.writeText(explanation).catch(() => {
       /* ignore clipboard errors */
     });
   };
   const editExplanation = () => {
+    // Prompt demo pattern: collect edited text without adding persistent storage yet.
     const updated = window.prompt("Edit explanation:", explanation);
     if (updated !== null) {
       // In a real app, you'd want to update the state here

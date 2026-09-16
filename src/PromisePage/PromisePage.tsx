@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import  Idata from "./Idata";
 function PromisesPage() {
+  // Async status state pattern: separate data, error, and status flags for fetch UI.
   const [catUrl, setCatUrl] = useState("");
   const [error, setError] = useState(false);
   const [state, setState] = useState("");
 
   function fetchCat() {
+    // Promise chain pattern: transition UI state before and after a network request.
     setState("loading");
     fetch("https://cataas.com/cat?json=true")
       .then((res) => {
@@ -21,7 +23,7 @@ function PromisesPage() {
 
   const fetchData = () => {
     setState("loading");
-    // Map the array of IDs to an array of Axios promise requests
+    // Promise.all pattern: start several requests and wait until all finish or one fails.
     const requests = Idata.map((item) => fetch(`${item.url}`));
 
     Promise.all(requests)
@@ -38,9 +40,11 @@ function PromisesPage() {
   };
 
   useEffect(() => {
+    // Mount effect pattern: fetch initial data once when the page opens.
     fetchCat();
   }, []);
 
+  // Error branch pattern: bail out early when the async state failed.
   if (state === "error") return <h1>{error.toString()}</h1>;
 
   return (

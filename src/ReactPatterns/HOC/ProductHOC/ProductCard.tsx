@@ -3,6 +3,7 @@ export type Product = {
   Title: string;
 };
 
+// Typed props pattern: ProductCard documents the exact product fields it can render.
 const ProductCard = ({ Title }: Product) => {
   return (
     <div className="product">

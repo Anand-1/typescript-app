@@ -4,6 +4,8 @@ import { appRoutes } from "../AppRoutes";
 
 
 export const ReactPatterns = () => {
+    // Route-driven menu pattern: the navigation is derived from the same config
+    // used by <Routes>, avoiding duplicated labels and paths.
     const parent = appRoutes.find((r) => r.path === "/reactpatterns/*");
     const patternRoutes = parent?.children ?? [];
 
@@ -20,6 +22,7 @@ export const ReactPatterns = () => {
                 </nav>
 
                 <div className="content-box">
+                    {/* Nested route outlet: each React pattern example renders inside this content box. */}
                     <Outlet />
                 </div>
             </div>

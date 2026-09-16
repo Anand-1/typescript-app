@@ -1,3 +1,4 @@
+// Optional command props pattern: one button component can render previous or next behavior.
 const ButtonSlider = ({ handlePrevious, handleNext }: { handlePrevious?: () => void; handleNext?: () => void }) => {
   return (
     <div className="button-slider">

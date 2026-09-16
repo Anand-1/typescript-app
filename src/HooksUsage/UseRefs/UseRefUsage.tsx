@@ -17,10 +17,11 @@ import { useState, useEffect, useRef } from "react";
 const UserRefUsage = () => {
   const [inputValue, setInputValue] = useState("");
 
-  // For tracking previous value
+  // Previous-value ref pattern: updating .current preserves data without triggering a render.
   const previousInputValue = useRef("");
 
   useEffect(() => {
+    // Synchronize the ref after each inputValue render so the next render can show the previous value.
     previousInputValue.current = inputValue;
   }, [inputValue]);
 
@@ -47,6 +48,7 @@ const UserRefUsage = () => {
 };
 
 const RederCalc = () => {
+  // Mutable ref pattern: count render passes without causing another render.
   const count = useRef(0);
 
   useEffect(() => {
@@ -57,7 +59,7 @@ const RederCalc = () => {
 };
 
 const FocusInput = () => {
-  // For accessing dom elements
+  // DOM ref pattern: keep a typed reference to the input element for imperative focus.
   const inputElement =
     React.useRef() as React.MutableRefObject<HTMLInputElement>;
   const focusInput = () => {

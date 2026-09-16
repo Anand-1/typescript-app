@@ -5,7 +5,7 @@ const ParentComponent = () => {
   return (
     <div>
       <h1>Parent Component</h1>
-      {/* Use MouseTracker with render prop */}
+      {/* Render prop pattern: MouseTracker owns tracking; this parent chooses the display component. */}
       <MouseTracker
         render={(mousePosition) => (
           <MousePositionDisplay position={mousePosition} />

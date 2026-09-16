@@ -4,6 +4,7 @@ const ParentComponent = () => {
   return (
     <>
       <h1>Parent Component</h1>
+      {/* Render props pattern: parent supplies a render function while child supplies the data. */}
       <ChildComponent render={(data) => <p>Data from child: {data}</p>} />
     </>
   );

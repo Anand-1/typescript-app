@@ -35,6 +35,8 @@ const initialTodos: Todo[] = [
   { id: 5, angular: false },
 ];
 
+// Reducer pattern: model state transitions with explicit action objects instead
+// of scattering several setState calls through the component.
 const reducer = (state: Todo[], action: TodoAction): Todo[] => {
   console.log(action);
   switch (action.type) {
@@ -64,6 +66,7 @@ const UseReducerUnd = () => {
   // return the same output. No surprises, side effects, API calls, mutations.
   const [todosInternal, dispatch] = useReducer(reducer, initialTodos);
   const handleComplete = (todo: Todo) => {
+    // Dispatch pattern: UI events send a small action; the reducer decides how state changes.
     dispatch({ type: "COMPLETE", id: todo.id });
   };
   const handleReactPress = () => {

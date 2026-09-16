@@ -13,6 +13,7 @@ function MyComponent() {
 
 function ErrorApp() {
   return (
+    // Boundary wrapper pattern: only descendants inside ErrorBoundary are protected.
     <ErrorBoundary>
       <MyComponent />
     </ErrorBoundary>

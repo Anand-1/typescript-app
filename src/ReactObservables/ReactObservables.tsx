@@ -10,6 +10,7 @@ import FirstPerson from "./FirstPerson";
 import SecondPerson from "./SecondPerson";
 
 const ReactObjservables = () => {
+  // Shared observable demo: both chat panes subscribe to the same external store.
   return (
     <>
       <div>

@@ -7,7 +7,8 @@ type AuthenticationProps = {
   onLogout: () => void;
 };
 
-// Higher Order Component (HOC)
+// Higher Order Component (HOC) pattern: keep authentication state and actions in
+// a wrapper so the dashboard can stay focused on rendering.
 const withAuthentication = <P extends object>(
   WrappedComponent: ComponentType<P & AuthenticationProps>
 ) => {
@@ -24,12 +25,12 @@ const withAuthentication = <P extends object>(
       setAuthenticated(false);
     };
 
-    // If user is not authenticated, redirect to login page
+    // Guard pattern: block protected content until authentication is true.
     if (!authenticated) {
       return <Link to="/login" />;
     }
 
-    // If user is authenticated, render the original component with additional props
+    // Prop injection pattern: the wrapper adds auth status and commands.
     return (
       <WrappedComponent
         {...props}

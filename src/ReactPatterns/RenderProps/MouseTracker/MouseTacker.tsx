@@ -9,6 +9,7 @@ type MouseTrackerProps = {
   render: (position: MousePosition) => React.ReactNode;
 };
 
+// Render props pattern: reusable stateful behavior is exposed through a function prop.
 const MouseTracker = ({ render }: MouseTrackerProps) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -20,7 +21,7 @@ const MouseTracker = ({ render }: MouseTrackerProps) => {
         style={{ height: "300px", border: "1px solid #ccc" }}
         onMouseMove={handleMouseMove}
       >
-        {/* Render the child component with the mouse position */}
+        {/* Inversion of control: the caller decides how the mouse position should be rendered. */}
         {render(position)}
       </div>
     </>

@@ -7,6 +7,8 @@ type Todo = {
 };
 
 const CustomHooks = () => {
+  // Custom hook pattern: the component asks for data while useFetch owns the
+  // reusable fetch/effect/state implementation.
   const [data] = useFetch<Todo>("https://jsonplaceholder.typicode.com/todos");
   return (
     <>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import  MyModal  from "../Features/Portals";
 
 const ReactPortals = () => {
+  // Toggle state pattern: parent controls whether the portal content is mounted.
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const handleclick = () => {
     setIsOpen((prev) => !prev);
@@ -16,6 +17,7 @@ const ReactPortals = () => {
       <button type="button" onClick={() => handleclick()}>
         Show / Hide
       </button>
+      {/* Portal consumer pattern: modal content is authored here but rendered into document.body. */}
       <MyModal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <h2>Modal Content</h2>
         <p>This content is rendered outside the App component!</p>

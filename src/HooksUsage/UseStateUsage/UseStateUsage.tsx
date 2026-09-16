@@ -27,6 +27,7 @@ const Counter = () => {
 
   console.log("------------------------------")
   console.log("Counter rendered");
+  // Primitive state pattern: count is local UI state owned by this component.
   const [count, setCount] = useState(0);
   return (
     <>
@@ -46,6 +47,7 @@ const Counter = () => {
 
 const CarMagic = () => {
   console.log("Car Magic rendered !");
+  // Object state pattern: keep related car fields together in one state object.
   const [car, setCar] = useState({
     brand: "Ford",
     model: "Mustang",
@@ -53,6 +55,7 @@ const CarMagic = () => {
     color: "red",
   });
   const updateColor = () => {
+    // Immutable update pattern: spread the previous object and replace only the field that changed.
     setCar((prevState) => {
       return { ...prevState, color: "blue" };
     });
@@ -71,8 +74,11 @@ const CarMagic = () => {
 
 const Todos = () => {
   console.log("Todos re-rendered");
+  // Array state pattern: React detects changes by receiving a new array reference.
   const [todo, setTodo] = useState(["Todo1", "Todo2"]);
   const handleTodos = () => {
+    // Functional update pattern: use the previous state argument when the next
+    // state depends on the current state.
     setTodo((prevTodos) => {
       return [...prevTodos, "Todo3"];
     });
@@ -86,6 +92,7 @@ const Todos = () => {
       </button>
       <div>
         {todo.map((todo, index) => {
+          // List rendering pattern: every mapped item needs a key for React reconciliation.
           return <p key={index}>{todo}</p>;
         })}
       </div>

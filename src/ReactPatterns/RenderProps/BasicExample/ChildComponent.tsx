@@ -4,6 +4,7 @@ type ChildComponentProps = {
   render: (data: string) => ReactElement;
 };
 
+// Render prop component: owns internal data but delegates the final markup to its parent.
 const ChildComponent = ({ render }: ChildComponentProps) => {
   const [internalData, setInternalData] = useState("Hello from child!");
   useEffect(() => {

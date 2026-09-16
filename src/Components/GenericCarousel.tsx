@@ -8,6 +8,8 @@ type CarouselItem = {
   content?: React.ReactNode;
 };
 
+// Reusable component API pattern: callers can pass data, rendering strategy,
+// autoplay behavior, and controls without changing carousel internals.
 type GenericCarouselProps = {
   items: CarouselItem[];
   renderItem?: (item: CarouselItem) => React.ReactNode;
@@ -27,11 +29,14 @@ const GenericCarousel = ({
   showDots = true,
   className = "",
 }: GenericCarouselProps) => {
+  // Controlled navigation state pattern: activeIndex is the single source of truth for the visible slide.
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [isPaused, setIsPaused] = React.useState(false);
+  // Ref pattern: touch coordinates are mutable gesture data that should not cause renders.
   const touchStartX = React.useRef<number | null>(null);
   const touchEndX = React.useRef<number | null>(null);
 
+  // Stable callback pattern: these handlers are memoized because the autoplay effect depends on them.
   const goToPrevious = React.useCallback(() => {
     setActiveIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
   }, [items.length]);
@@ -41,6 +46,7 @@ const GenericCarousel = ({
   }, [items.length]);
 
   React.useEffect(() => {
+    // Autoplay effect pattern: start an interval only when autoplay is enabled and not paused.
     if (!autoPlay || isPaused || items.length <= 1) {
       return undefined;
     }
@@ -67,6 +73,7 @@ const GenericCarousel = ({
 
     const delta = touchStartX.current - touchEndX.current;
 
+    // Swipe threshold pattern: ignore tiny movements and navigate only after a deliberate swipe.
     if (delta > 50) {
       goToNext();
     } else if (delta < -50) {
@@ -78,6 +85,7 @@ const GenericCarousel = ({
   };
 
   if (!items.length) {
+    // Empty state pattern: render nothing when there are no slides.
     return null;
   }
 
@@ -100,6 +108,7 @@ const GenericCarousel = ({
               key={item.id}
               className={`generic-carousel-slide ${index === activeIndex ? "active" : ""}`}
             >
+              {/* Render prop pattern: allow callers to customize each slide's markup. */}
               {renderItem ? renderItem(item) : item.content}
             </div>
           ))}

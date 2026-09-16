@@ -18,4 +18,6 @@ const Todos = ({ todos, addTodo }: TodosProps) => {
   );
 };
 
+// React.memo pattern: skip child re-rendering when todos and addTodo keep the
+// same references between parent renders.
 export default memo(Todos);

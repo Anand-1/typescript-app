@@ -2,15 +2,18 @@ import React, { useState, useLayoutEffect } from "react";
 import chatStore from "./Store/chat";
 
 const FirstPerson = () => {
+  // External store subscription pattern: local React state mirrors the RxJS chat store.
   const [chatState, setChatState] = useState(chatStore.initialState);
 
   useLayoutEffect(() => {
+    // Synchronous subscription pattern: useLayoutEffect updates before the browser paints.
     chatStore.subscribe(setChatState);
     chatStore.init();
   }, []);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    // Event adapter pattern: translate form input into a message object for the store.
     const messageObject = {
       person: "first-person",
       text: e.target.elements.messageInput.value.trim(),

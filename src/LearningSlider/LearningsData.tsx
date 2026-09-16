@@ -1,3 +1,5 @@
+// Data module pattern: keep learning examples outside the component so UI code
+// can focus on rendering and navigation.
 const data = [
   {
     id: 0,

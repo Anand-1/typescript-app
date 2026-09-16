@@ -29,6 +29,8 @@ const UseCallBackUsage = () => {
   //   setTodos((t) => [...t, "New Todo"]);
   // };
 
+  // Stable callback pattern: memoize the function identity so the memoized child
+  // does not re-render when only count changes.
   const addTodo = useCallback(() => {
     setTodos((t) => [...t, "New Todo"]);
   }, []);
@@ -43,6 +45,7 @@ const UseCallBackUsage = () => {
       </div>
       <hr />
       <h2>Child Component</h2>
+      {/* Parent-to-child callback pattern: the child receives data plus a command prop. */}
       <Todos todos={todos} addTodo={addTodo} />
     </>
   );

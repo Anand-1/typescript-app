@@ -5,7 +5,8 @@ const UseMemoUsage = () => {
   const [todos, setTodos] = useState<string[]>(["Old Todo"]);
 
   // const calcualtion = expensiveCalc(count);
-  // On change of count , calculation will not happen
+  // Memoized calculation pattern: expensiveCalc runs again only when count changes,
+  // so adding todos does not repeat the expensive work.
   const calculation = useMemo(() => expensiveCalc(count), [count]);
 
   const increment = () => {
@@ -34,6 +35,7 @@ const UseMemoUsage = () => {
 };
 const expensiveCalc = (num: number) => {
   console.log("Calculating...");
+  // Artificially expensive work so the useMemo behavior is visible in the console.
   for (let i = 0; i < 1000000; i++) {
     num += 1;
   }

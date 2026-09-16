@@ -1,9 +1,12 @@
 import React from "react";
 import MyModal from "../Features/Portals";
+
+// Interactive snippet pattern: the component shows, edits, runs, copies, and displays code output.
 const SnippitSlider = ({ data }: { data: any }) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(true);
   const [displayOutput, setDisplayOutput] = React.useState<string>("");
   function editCode() {
+  // Imperative DOM access pattern: this demo reads editable code directly from the rendered <pre>.
   const codeElem = document.getElementById("code-block");
   const current = codeElem?.textContent || "";
   const updated = window.prompt("Edit code:", current);
@@ -13,17 +16,20 @@ const SnippitSlider = ({ data }: { data: any }) => {
 }
 
 function runCode() {
+  // Dynamic execution pattern: run the snippet text and capture console.log output for display.
   const code = document.getElementById("code-block")?.textContent || "";
   setIsOpen(true);
   // Run Code and capture output
   try {
     const originalLog = console.log;
     let output = "";
+    // Temporary monkey-patch pattern: intercept console.log during snippet execution only.
     console.log = (message: any) => {
       output += message + "\n";
     };
     const fn = new Function(code);
     fn();
+    // Restore global console behavior immediately after running the snippet.
     console.log = originalLog;
     setDisplayOutput(output);
     
@@ -43,6 +49,7 @@ function runCode() {
             onClick={() => {
               const code =
                 document.getElementById("code-block")?.textContent || "";
+              // Clipboard API pattern: copy generated/edited snippet text from the UI.
               navigator.clipboard.writeText(code).catch(() => {
                 /* ignore clipboard errors */
               });

@@ -1,6 +1,7 @@
 import React, { ComponentType, useState, useEffect } from "react";
 
-// Higher Order Component (HOC)
+// Higher Order Component (HOC) pattern: wrap any component and add loading behavior
+// without changing the wrapped component's implementation.
 const withLoadingSpinner = <P extends object>(
   WrappedComponent: ComponentType<P>
 ) => {
@@ -8,7 +9,7 @@ const withLoadingSpinner = <P extends object>(
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-      // Simulate an API call or asynchronous operation
+      // Async side-effect pattern: simulate a loading phase when the wrapper mounts.
       const fetchData = async () => {
         // Assuming some async operation that takes time (e.g., fetching data from an API)
         await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -21,7 +22,7 @@ const withLoadingSpinner = <P extends object>(
       fetchData();
     }, []); // Empty dependency array ensures useEffect runs only once (on mount)
 
-    // If loading is true, display a loading spinner
+    // Conditional rendering pattern: the wrapper decides whether to show fallback UI.
     if (loading) {
       return <div>Loading...</div>;
     }

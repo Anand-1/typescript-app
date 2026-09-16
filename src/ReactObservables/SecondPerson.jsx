@@ -2,15 +2,18 @@ import { useState, useLayoutEffect } from "react";
 import chatStore from "./Store/chat";
 
 const SecondPerson = () => {
+  // External store subscription pattern: this component receives the same stream as FirstPerson.
   const [chatState, setChatState] = useState(chatStore.initialState);
 
   useLayoutEffect(() => {
+    // Synchronous subscription pattern: subscribe before paint so both panes stay visually aligned.
     chatStore.subscribe(setChatState);
     chatStore.init();
   }, []);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    // Event adapter pattern: tag the message with the sender before publishing it.
     const messageObject = {
       person: "second-person",
       text: e.target.elements.messageInput.value.trim(),

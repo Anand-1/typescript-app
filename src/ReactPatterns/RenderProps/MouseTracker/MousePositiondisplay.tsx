@@ -5,6 +5,7 @@ type MousePositionDisplayProps = {
   position: MousePosition;
 };
 
+// Display component pattern: no state, only formats the data passed by MouseTracker.
 const MousePositionDisplay = ({ position }: MousePositionDisplayProps) => {
   return (
     <>

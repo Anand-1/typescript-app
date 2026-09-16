@@ -9,7 +9,8 @@ type WithMousePositionProps = {
   mousePosition: MousePosition;
 };
 
-// Higher Order Component (HOC)
+// Higher Order Component (HOC) pattern: centralize mouse tracking and pass the
+// current position into any wrapped display component.
 const withMousePosition = <P extends object>(
   WrappedComponent: ComponentType<P & WithMousePositionProps>
 ) => {
@@ -17,7 +18,7 @@ const withMousePosition = <P extends object>(
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
-      // Function to update mouse position
+      // Browser event subscription pattern: React state is updated from a document event.
       const updateMousePosition = (e: MouseEvent) => {
         setMousePosition({ x: e.clientX, y: e.clientY });
       };
@@ -25,7 +26,7 @@ const withMousePosition = <P extends object>(
       // Add event listener to track mouse movement
       document.addEventListener("mousemove", updateMousePosition);
 
-      // Clean up the event listener on component unmount
+      // Cleanup pattern: remove global listeners to avoid duplicate handlers and leaks.
       return () => {
         document.removeEventListener("mousemove", updateMousePosition);
       };
