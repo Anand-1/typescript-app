@@ -2,10 +2,13 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { rootReducer } from "./rootReducer";
+import { apiPageMiddleware } from "./middleware";
 
 // Store configuration pattern: configureStore wires reducers and default middleware.
 export const store = configureStore({
   reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiPageMiddleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
