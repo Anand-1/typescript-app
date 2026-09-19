@@ -21,18 +21,30 @@ const LearningSlider = () => {
     }
   };    
   return (
-    <div className="learning-slider">
-      <h2>Learning Slider</h2>
-      <p>This is a simple learning slider component.</p>
-      <hr />
-      <SnippitSlider data={dataIndex} />
-      <div className="button-slider-container">
-        {/* Command prop pattern: parent owns navigation state; buttons receive only the action they trigger. */}
-        <ButtonSlider handlePrevious={handlePrevious}  />
-        <ButtonSlider handleNext={handleNext} />
-      </div>
-      <Explanation explanation={dataIndex.explanation ?? ""} />
-    </div>
+    <section className="learning-slider example-page">
+      <header className="example-header">
+        <h1>Learning Slider Example</h1>
+        <p>
+          Step through code snippets, run them in the browser, copy them, and
+          reveal explanations for each learning item.
+        </p>
+        <div className="example-links">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop" target="_blank" rel="noreferrer">
+            Open Event Loop Docs
+          </a>
+        </div>
+      </header>
+
+      <section className="example-panel">
+        <SnippitSlider data={dataIndex} />
+        <div className="button-slider-container">
+          {/* Command prop pattern: parent owns navigation state; buttons receive only the action they trigger. */}
+          <ButtonSlider handlePrevious={handlePrevious}  />
+          <ButtonSlider handleNext={handleNext} />
+        </div>
+        <Explanation explanation={dataIndex.explanation ?? ""} />
+      </section>
+    </section>
   );
 };
 

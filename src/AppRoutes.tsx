@@ -24,6 +24,7 @@ import HigherOrderAuthentication from "./ReactPatterns/HOC/HigherOrderAuthentica
 import Persons from "./ReactPatterns/HOC/PersonHOC/Persons";
 import ProductsListWithSearch from "./ReactPatterns/HOC/ProductHOC/SearchCard";
 import AssumptionsEntry from "./AssumptionsDaily/AssumptionsEntry";
+import GraphQLExample from "./GraphQL/GraphQLExample";
 
 // Typed route configuration pattern: each route owns the URL segment, display
 // label, element, and optional nested child routes in one reusable structure.
@@ -71,6 +72,7 @@ export const appRoutes: AppRoute[] = [
     ],
   },
   { path: "/reactQuery", label: "React Query", element: <ReactQuery /> },
+  { path: "/graphql", label: "GraphQL Apollo", element: <GraphQLExample /> },
   { path: "/reactportals", label: "React Portals", element: <ReactPortals /> },
   { path: "/promisepage", label: "Promise Page", element: <PromisesPage /> },
   {

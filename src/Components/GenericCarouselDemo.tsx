@@ -63,25 +63,37 @@ const demoItems: DemoItem[] = [
 
 const GenericCarouselDemo = () => {
   return (
-    <section style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem", padding: "2rem 1rem 3rem" }}>
-      <h2>Generic Carousel</h2>
-      <p>This example renders a reusable carousel from an array of items.</p>
+    <section className="example-page">
+      <header className="example-header">
+        <h1>Generic Carousel Example</h1>
+        <p>
+          A reusable carousel that accepts item data, render props, autoplay,
+          controls, dots, hover pause, and touch gestures.
+        </p>
+        <div className="example-links">
+          <a href="https://react.dev/learn/passing-props-to-a-component" target="_blank" rel="noreferrer">
+            Open Props Docs
+          </a>
+        </div>
+      </header>
 
-      <GenericCarousel
-        items={demoItems}
-        autoPlay
-        interval={4000}
-        // Custom renderer pattern: the generic carousel owns movement, this callback owns slide UI.
-        renderItem={(item) => (
-          <div style={{ background: "#fff", borderRadius: "16px", overflow: "hidden", boxShadow: "0 12px 30px rgba(15, 23, 42, 0.12)" }}>
-            <img src={item.image} alt={item.title} style={{ width: "100%", height: "320px", objectFit: "cover", display: "block" }} />
-            <div style={{ padding: "1rem 1.25rem 1.25rem" }}>
-              <h3 style={{ margin: "0 0 0.35rem" }}>{item.title}</h3>
-              <p style={{ margin: 0, color: "#475569" }}>{item.description}</p>
+      <section className="example-panel">
+        <GenericCarousel
+          items={demoItems}
+          autoPlay
+          interval={4000}
+          // Custom renderer pattern: the generic carousel owns movement, this callback owns slide UI.
+          renderItem={(item) => (
+            <div style={{ background: "#fff", borderRadius: "8px", overflow: "hidden", boxShadow: "0 12px 30px rgba(15, 23, 42, 0.12)" }}>
+              <img src={item.image} alt={item.title} style={{ width: "100%", height: "320px", objectFit: "cover", display: "block" }} />
+              <div style={{ padding: "1rem 1.25rem 1.25rem" }}>
+                <h3 style={{ margin: "0 0 0.35rem" }}>{item.title}</h3>
+                <p style={{ margin: 0, color: "#475569" }}>{item.description}</p>
+              </div>
             </div>
-          </div>
-        )}
-      />
+          )}
+        />
+      </section>
     </section>
   );
 };

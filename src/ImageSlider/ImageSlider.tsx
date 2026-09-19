@@ -135,8 +135,20 @@ const ImageSlider = () => {
 
   return (
     <section className={`image-slider-page ${isFullScreen ? "fullscreen" : ""}`}>
-      <h2>Image Carousel</h2>
-      <p>This route demonstrates a simple image carousel.</p>
+      {!isFullScreen && (
+        <header className="example-header">
+          <h1>Image Carousel Example</h1>
+          <p>
+            A keyboard, touch, hover-pause, autoplay, and fullscreen carousel
+            built from local slide data.
+          </p>
+          <div className="example-links">
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Touch_events" target="_blank" rel="noreferrer">
+              Open Touch Events Docs
+            </a>
+          </div>
+        </header>
+      )}
 
       <div
         className={`image-slider-card ${isFullScreen ? "fullscreen-card" : ""}`}

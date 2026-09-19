@@ -9,7 +9,19 @@ export const Hooks = () => {
     const hookRoutes = parent?.children ?? [];
 
     return (
-        <>
+        <section className="example-page">
+            <header className="example-header">
+                <h1>React Hooks Examples</h1>
+                <p>
+                    Browse focused examples for state, effects, refs, callback
+                    memoization, value memoization, reducers, and custom hooks.
+                </p>
+                <div className="example-links">
+                    <a href="https://react.dev/reference/react/hooks" target="_blank" rel="noreferrer">
+                        Open React Hooks Docs
+                    </a>
+                </div>
+            </header>
             <div className="content-grid">
                 <nav className="nav-column">
                     {hookRoutes.map((route) => (
@@ -24,7 +36,6 @@ export const Hooks = () => {
                     <Outlet />
                 </div>
             </div>
-        </>
+        </section>
     )
 }
-

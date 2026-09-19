@@ -1,0 +1,92 @@
+.graphql-page {
+  display: grid;
+  gap: 18px;
+  text-align: left;
+}
+
+.graphql-header,
+.graphql-query,
+.graphql-state {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.graphql-header {
+  display: grid;
+  gap: 10px;
+  padding: 24px;
+}
+
+.graphql-header h1,
+.graphql-header p {
+  margin: 0;
+}
+
+.graphql-header p {
+  color: var(--muted);
+}
+
+.graphql-link {
+  width: fit-content;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.graphql-link:hover,
+.graphql-link:focus-visible {
+  text-decoration: underline;
+}
+
+.graphql-query {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  color: #dbeafe;
+  background: #172033;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.graphql-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.graphql-toolbar h2 {
+  margin: 0;
+}
+
+.graphql-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+.graphql-card,
+.graphql-state {
+  padding: 16px;
+}
+
+.graphql-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 8px 22px rgba(23, 32, 51, 0.05);
+}
+
+.graphql-card h3 {
+  margin: 0 0 8px;
+}
+
+.graphql-card p {
+  margin: 4px 0;
+  color: var(--muted);
+}
+
+.graphql-state {
+  color: var(--muted);
+}

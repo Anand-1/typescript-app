@@ -10,8 +10,19 @@ export const ReactPatterns = () => {
     const patternRoutes = parent?.children ?? [];
 
     return (
-        <>
-            <h1>React Patterns</h1>
+        <section className="example-page">
+            <header className="example-header">
+                <h1>React Patterns Examples</h1>
+                <p>
+                    Browse composition patterns including higher-order
+                    components, render props, and container/presentational splits.
+                </p>
+                <div className="example-links">
+                    <a href="https://react.dev/learn/passing-props-to-a-component" target="_blank" rel="noreferrer">
+                        Open Composition Docs
+                    </a>
+                </div>
+            </header>
             <div className="content-grid">
                 <nav className="nav-column">
                     {patternRoutes.map((route) => (
@@ -26,6 +37,6 @@ export const ReactPatterns = () => {
                     <Outlet />
                 </div>
             </div>
-        </>
+        </section>
     )
 }

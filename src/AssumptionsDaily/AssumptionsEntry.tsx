@@ -150,79 +150,92 @@ const AssumptionsEntry = () => {
   };
 
   return (
-    <section style={{ maxWidth: 640, margin: "2rem auto", padding: 24 }}>
-      <h2>Assumptions Daily Entry</h2>
+    <section className="example-page">
+      <header className="example-header">
+        <h1>Assumptions Form Example</h1>
+        <p>
+          A small Formik-style render-props form that controls textarea fields,
+          submits JSON, and resets after a successful request.
+        </p>
+        <div className="example-links">
+          <a href="https://formik.org/docs/overview" target="_blank" rel="noreferrer">
+            Open Formik Docs
+          </a>
+        </div>
+      </header>
 
-      <Formik
-        initialValues={initialValues}
-        onSubmit={async (values, { setSubmitting, resetForm }) => {
-          try {
-            // Submit success pattern: persist, then reset the controlled form.
-            await submitPayload(values);
-            resetForm();
-          } catch (error) {
-            console.error("Failed to submit assumption", error);
-          } finally {
-            setSubmitting(false);
-          }
-        }}
-      >
-        {({ isSubmitting, handleSubmit, handleChange, values }) => (
-          <Form onSubmit={handleSubmit}>
-            <div style={{ marginBottom: 16 }}>
-              <label htmlFor="assumption" style={{ display: "block", marginBottom: 6 }}>
-                Assumption
-              </label>
-              <Field
-                id="assumption"
-                name="assumption"
-                as="textarea"
-                rows={4}
-                value={values.assumption}
-                onChange={handleChange}
-                placeholder="Describe the assumption"
-                style={{ width: "100%", padding: 12, boxSizing: "border-box" }}
-              />
-            </div>
+      <section className="example-panel">
+        <Formik
+          initialValues={initialValues}
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
+            try {
+              // Submit success pattern: persist, then reset the controlled form.
+              await submitPayload(values);
+              resetForm();
+            } catch (error) {
+              console.error("Failed to submit assumption", error);
+            } finally {
+              setSubmitting(false);
+            }
+          }}
+        >
+          {({ isSubmitting, handleSubmit, handleChange, values }) => (
+            <Form onSubmit={handleSubmit}>
+              <div style={{ marginBottom: 16 }}>
+                <label htmlFor="assumption" style={{ display: "block", marginBottom: 6 }}>
+                  Assumption
+                </label>
+                <Field
+                  id="assumption"
+                  name="assumption"
+                  as="textarea"
+                  rows={4}
+                  value={values.assumption}
+                  onChange={handleChange}
+                  placeholder="Describe the assumption"
+                  style={{ width: "100%", padding: 12, boxSizing: "border-box" }}
+                />
+              </div>
 
-            <div style={{ marginBottom: 16 }}>
-              <label htmlFor="action" style={{ display: "block", marginBottom: 6 }}>
-                Action
-              </label>
-              <Field
-                id="action"
-                name="action"
-                as="textarea"
-                rows={4}
-                value={values.action}
-                onChange={handleChange}
-                placeholder="What action will be taken?"
-                style={{ width: "100%", padding: 12, boxSizing: "border-box" }}
-              />
-            </div>
+              <div style={{ marginBottom: 16 }}>
+                <label htmlFor="action" style={{ display: "block", marginBottom: 6 }}>
+                  Action
+                </label>
+                <Field
+                  id="action"
+                  name="action"
+                  as="textarea"
+                  rows={4}
+                  value={values.action}
+                  onChange={handleChange}
+                  placeholder="What action will be taken?"
+                  style={{ width: "100%", padding: 12, boxSizing: "border-box" }}
+                />
+              </div>
 
-            <div style={{ marginBottom: 16 }}>
-              <label htmlFor="inference" style={{ display: "block", marginBottom: 6 }}>
-                Inference
-              </label>
-              <Field
-                id="inference"
-                name="inference"
-                as="textarea"
-                rows={4}
-                value={values.inference}
-                onChange={handleChange}
-                placeholder="State the inference"
-                style={{ width: "100%", padding: 12, boxSizing: "border-box" }}
-              />
-            </div>
+              <div style={{ marginBottom: 16 }}>
+                <label htmlFor="inference" style={{ display: "block", marginBottom: 6 }}>
+                  Inference
+                </label>
+                <Field
+                  id="inference"
+                  name="inference"
+                  as="textarea"
+                  rows={4}
+                  value={values.inference}
+                  onChange={handleChange}
+                  placeholder="State the inference"
+                  style={{ width: "100%", padding: 12, boxSizing: "border-box" }}
+                />
+              </div>
 
-            <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Submitting..." : "Submit assumption"}
-            </button>
-          </Form>
-        )}
-      </Formik>
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : "Submit assumption"}
+              </button>
+            </Form>
+          )}
+        </Formik>
+      </section>
     </section>
   );
 };

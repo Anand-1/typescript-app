@@ -45,21 +45,51 @@ function PromisesPage() {
   }, []);
 
   // Error branch pattern: bail out early when the async state failed.
-  if (state === "error") return <h1>{error.toString()}</h1>;
+  if (state === "error") {
+    return (
+      <section className="example-page">
+        <header className="example-header">
+          <h1>Promise Fetch Example</h1>
+          <p>Fetch requests failed and the route rendered its error branch.</p>
+        </header>
+        <div className="example-state">{error.toString()}</div>
+      </section>
+    );
+  }
 
   return (
-    <div>
-      
-      <button onClick={fetchCat}>New Cat?</button>
-      <button onClick={fetchData}>Simulate Error</button>
-      <div>
+    <section className="example-page">
+      <header className="example-header">
+        <h1>Promise Fetch Example</h1>
+        <p>
+          This page demonstrates fetch promises, a loading state, an error
+          branch, and Promise.all for grouped requests.
+        </p>
+        <div className="example-links">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all" target="_blank" rel="noreferrer">
+            Open Promise.all Docs
+          </a>
+          <a href="https://cataas.com/cat?json=true" target="_blank" rel="noreferrer">
+            Open Cat API
+          </a>
+        </div>
+      </header>
+
+      <section className="example-panel">
+        <div className="example-toolbar">
+          <h2>Cat Request</h2>
+          <div>
+            <button type="button" onClick={fetchCat}>New Cat</button>
+            <button type="button" onClick={fetchData}>Run Promise.all</button>
+          </div>
+        </div>
         {state === "loading" ? (
-          <h1>Loading...</h1>
+          <div className="example-state">Loading...</div>
         ) : (
-          <img alt="cat" src={catUrl} />
+          <img alt="cat" src={catUrl} style={{ width: "min(100%, 520px)", borderRadius: 8 }} />
         )}
-      </div>
-    </div>
+      </section>
+    </section>
   );
 }
 
