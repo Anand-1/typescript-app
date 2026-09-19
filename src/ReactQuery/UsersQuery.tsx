@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-
-type User = {
-    id: number;
-    name: string;
-    email: string;
-    company: {
-        name: string;
-    };
-};
+import ApiPageControls from "../store/ApiPageControls";
+import { selectApiPage } from "../store/api/selectors";
+import { useAppSelector } from "../store/hooks";
+import {
+    USERS_API_URL,
+    USERS_PAGE_SIZE,
+    USERS_QUERY_KEY,
+    USERS_REQUEST_DELAY,
+} from "./constants";
+import { User } from "./types";
 
 const UsersQuery = () => {
     return (
@@ -16,14 +17,17 @@ const UsersQuery = () => {
 };
 
 const UsersQueryContent = () => {
+    const page = useAppSelector(selectApiPage);
+
     // React Query API pattern: use a unique key for the remote users resource.
     const { data, error, isLoading, refetch, isFetching } = useQuery<User[]>({
-        queryKey: ["users"],
-        queryFn: () => wait(1000).then(() => fetchUsers()),
+        queryKey: [USERS_QUERY_KEY, page],
+        queryFn: () => wait(USERS_REQUEST_DELAY).then(() => fetchUsers(page)),
     });
 
     return (
         <section className="react-query-panel">
+            <ApiPageControls />
             <div className="react-query-toolbar">
                 <h2>Remote Users</h2>
                 <button type="button" onClick={() => refetch()} disabled={isFetching}>
@@ -49,8 +53,10 @@ const UsersQueryContent = () => {
     );
 };
 
-async function fetchUsers(): Promise<User[]> {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+async function fetchUsers(page: number): Promise<User[]> {
+    const response = await fetch(
+        `${USERS_API_URL}?_page=${page}&_limit=${USERS_PAGE_SIZE}`
+    );
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }

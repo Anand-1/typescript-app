@@ -1,25 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import UsersQuery from "./UsersQuery";
+import {
+  POSTS,
+  POSTS_QUERY_KEY,
+  POSTS_REQUEST_DELAY,
+  REACT_QUERY_DOCS_URL,
+  USERS_API_URL,
+} from "./constants";
+import { Post } from "./types";
 import "./ReactQuery.css";
-
-type Post = {
-  id: number;
-  title: string;
-  summary: string;
-};
-
-const POSTS: Post[] = [
-  {
-    id: 1,
-    title: "Post 1",
-    summary: "A cached local post resolved through a simulated request.",
-  },
-  {
-    id: 2,
-    title: "Post 2",
-    summary: "A second item to show React Query rendering a list of server state.",
-  },
-];
 
 const ReactQuery = () => {
   /* React Query is a library for fetching, caching and updating asynchronous data in React applications. It provides a set of hooks that allow you to easily manage server state in your components.
@@ -31,8 +20,8 @@ const ReactQuery = () => {
   // Server-state pattern: useQuery owns loading, caching, and refetch behavior for this data.
   const postQuery = useQuery<Post[]>({
     // Query key pattern: stable keys identify cached data across renders.
-    queryKey: ["posts"],
-    queryFn: () => wait(2000).then(() => [...POSTS]),
+    queryKey: POSTS_QUERY_KEY,
+    queryFn: () => wait(POSTS_REQUEST_DELAY).then(() => [...POSTS]),
   });
 
   return (
@@ -45,14 +34,14 @@ const ReactQuery = () => {
         </p>
         <div className="react-query-links">
           <a
-            href="https://tanstack.com/query/latest/docs/framework/react/overview"
+            href={REACT_QUERY_DOCS_URL}
             target="_blank"
             rel="noreferrer"
           >
             Open React Query Docs
           </a>
           <a
-            href="https://jsonplaceholder.typicode.com/users"
+            href={USERS_API_URL}
             target="_blank"
             rel="noreferrer"
           >

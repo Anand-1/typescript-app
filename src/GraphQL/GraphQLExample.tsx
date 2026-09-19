@@ -1,44 +1,20 @@
-import { gql } from "@apollo/client";
 import { useQuery } from "@apollo/client/react";
+import ApiPageControls from "../store/ApiPageControls";
+import { selectApiPage } from "../store/api/selectors";
+import { useAppSelector } from "../store/hooks";
+import { GRAPHQL_API_URL } from "./constants";
+import { GET_CHARACTERS } from "./queries";
+import { CharactersData } from "./types";
 import "./GraphQLExample.css";
 
-type Character = {
-  id: string;
-  name: string;
-  species: string;
-  status: string;
-  origin: {
-    name: string;
-  };
-};
-
-type CharactersData = {
-  characters: {
-    results: Character[];
-  };
-};
-
-const GET_CHARACTERS = gql`
-  query GetCharacters {
-    characters(page: 1) {
-      results {
-        id
-        name
-        species
-        status
-        origin {
-          name
-        }
-      }
-    }
-  }
-`;
-
 const GraphQLExample = () => {
+  const page = useAppSelector(selectApiPage);
+
   // Apollo useQuery pattern: the component reads server data from the ApolloProvider client.
   const { data, loading, error, refetch, networkStatus } = useQuery<CharactersData>(
     GET_CHARACTERS,
     {
+      variables: { page },
       notifyOnNetworkStatusChange: true,
     }
   );
@@ -55,13 +31,15 @@ const GraphQLExample = () => {
         </p>
         <a
           className="graphql-link"
-          href="https://rickandmortyapi.com/graphql"
+          href={GRAPHQL_API_URL}
           target="_blank"
           rel="noreferrer"
         >
           Open GraphQL API
         </a>
       </header>
+
+      <ApiPageControls />
 
       <pre className="graphql-query">
         <code>{GET_CHARACTERS.loc?.source.body}</code>

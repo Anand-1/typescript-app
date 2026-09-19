@@ -4,8 +4,3 @@
 export interface CounterState {
   value: number;
 }
-
-// Root state type: mirrors the reducer keys used by combineReducers.
-export interface RootState {
-  counter: CounterState;
-}

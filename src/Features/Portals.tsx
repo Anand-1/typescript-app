@@ -22,7 +22,7 @@ const MyModal = ({ children, isOpen, onClose }: { children: React.ReactNode; isO
         background: 'transparent',
         padding: '20px',
         borderRadius: '8px', 
-        color: 'red',
+        color: 'grey',
         boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
         maxWidth: '400px',
         width: '100%',
