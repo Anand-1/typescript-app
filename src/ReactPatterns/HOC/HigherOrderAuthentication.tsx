@@ -1,5 +1,4 @@
 import React, { ComponentType, useState } from "react";
-import { Link } from "react-router-dom";
 
 type AuthenticationProps = {
   isAuthenticated: boolean;
@@ -27,7 +26,12 @@ const withAuthentication = <P extends object>(
 
     // Guard pattern: block protected content until authentication is true.
     if (!authenticated) {
-      return <Link to="/login" />;
+      return (
+        <div>
+          <p>Please log in to access the dashboard.</p>
+          <button onClick={login}>Login</button>
+        </div>
+      );
     }
 
     // Prop injection pattern: the wrapper adds auth status and commands.

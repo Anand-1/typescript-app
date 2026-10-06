@@ -6,7 +6,7 @@ import { appRoutes } from "../AppRoutes";
 export const ReactPatterns = () => {
     // Route-driven menu pattern: the navigation is derived from the same config
     // used by <Routes>, avoiding duplicated labels and paths.
-    const parent = appRoutes.find((r) => r.path === "/reactpatterns/*");
+    const parent = appRoutes.find((r) => r.path === "/reactpatterns");
     const patternRoutes = parent?.children ?? [];
 
     return (

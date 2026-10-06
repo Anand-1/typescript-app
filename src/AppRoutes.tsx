@@ -39,7 +39,7 @@ type AppRoute = {
 export const appRoutes: AppRoute[] = [
   // Nested route group: the parent component renders the section menu and an <Outlet />.
   {
-    path: "/hooks/*",
+    path: "/hooks",
     label: "Hooks Usages",
     element: <Hooks />,
     children: [
@@ -54,7 +54,7 @@ export const appRoutes: AppRoute[] = [
   },
   // Pattern catalogue group: each child route isolates a specific React composition technique.
   {
-    path: "/reactpatterns/*",
+    path: "/reactpatterns",
     label: "React patterns",
     element: <ReactPatterns />,
     children: [

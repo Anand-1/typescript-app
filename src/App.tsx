@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Link, Navigate } from "react-router-dom";
 import BreadCrumbs from "./Features/BreadCrumbs";
 import { appRoutes } from "./AppRoutes";
 
@@ -44,6 +44,7 @@ function App() {
               route.children ? (
                 // Nested route pattern: parent pages render an <Outlet /> where child examples appear.
                 <Route key={route.path} path={route.path} element={route.element}>
+                  <Route index element={<Navigate to={route.children[0].path} replace />} />
                   {route.children.map((child) => (
                     <Route key={`${route.path}-${child.path}`} path={child.path} element={child.element} />
                   ))}
@@ -52,6 +53,7 @@ function App() {
                 <Route key={route.path} path={route.path} element={route.element} />
               )
             )}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
       </BrowserRouter>

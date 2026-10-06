@@ -5,7 +5,7 @@ import { appRoutes } from "../AppRoutes";
 export const Hooks = () => {
     // Route introspection pattern: reuse appRoutes so the sidebar cannot drift
     // away from the actual nested hook routes.
-    const parent = appRoutes.find((r) => r.path === "/hooks/*");
+    const parent = appRoutes.find((r) => r.path === "/hooks");
     const hookRoutes = parent?.children ?? [];
 
     return (
