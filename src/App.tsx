@@ -28,12 +28,7 @@ function App() {
   return (
     <div className="App">
       {/* Router boundary pattern: BrowserRouter owns history and exposes route state to descendants. */}
-      <BrowserRouter
-        future={{
-          v7_startTransition: true,
-          v7_relativeSplatPath: true,
-        }}
-      >
+      <BrowserRouter>
         {/* Shared layout pattern: breadcrumbs live outside <Routes> so they render for every page. */}
         <BreadCrumbs />
         <main className="app-main">

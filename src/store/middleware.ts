@@ -9,7 +9,7 @@ export const apiPageMiddleware: Middleware = ({ getState }) => (next) => (
   const result = next(action);
 
   if (
-    process.env.NODE_ENV !== "production" &&
+    import.meta.env.MODE !== "production" &&
     typeof action === "object" &&
     action !== null &&
     "type" in action &&

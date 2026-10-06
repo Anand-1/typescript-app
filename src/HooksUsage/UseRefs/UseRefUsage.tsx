@@ -60,10 +60,9 @@ const RederCalc = () => {
 
 const FocusInput = () => {
   // DOM ref pattern: keep a typed reference to the input element for imperative focus.
-  const inputElement =
-    React.useRef() as React.MutableRefObject<HTMLInputElement>;
+  const inputElement = React.useRef<HTMLInputElement | null>(null);
   const focusInput = () => {
-    inputElement.current.focus();
+    inputElement.current?.focus();
   };
   return (
     <>
