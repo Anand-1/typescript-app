@@ -36,7 +36,7 @@ function MenuItem({ item }: { item: any }) {
 
   return (
     <li className="menu-item" data-testid={`menu-item-${item.id}`} style={{ margin: '6px 0' }}>
-      <div 
+      <div
         onClick={handleToggle}
         className={`menu-trigger ${hasChildren ? 'has-children' : ''} ${isOpen ? 'expanded' : 'collapsed'}`}
         style={{
