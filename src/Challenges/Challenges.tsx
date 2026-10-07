@@ -5,80 +5,103 @@ import { CountryCapitalGame } from "./CountryCapitalGame";
 import DynamicMenu from "./ShowHideMenu";
 import SignupWizard from "./MultiStepform";
 import DebouncedSearch from "./DebouncedSearch";
+import ProductCatalog from "./ProductCatalog";
+
+const startGame = {
+    countryCapital: false,
+    likeDislike: false,
+    showHideMenu: false,
+    multiStepForm: false,
+    debouncedSearch: false,
+    productCatalog: false
+}
 
 const Challenges = () => {
-    const [gameStarted, setGameStarted] = useState(false);
-    const StartGame = () => {
-        setGameStarted(true);
+    const [gameStarted, setGameStarted] = useState(startGame);
+    const StartGame = (gameType: keyof typeof startGame) => {
+        setGameStarted(prev => ({
+            ...prev,
+            [gameType]: true
+        }));
     }
     return (
         <section className="challenges-page">
-            <header className="challenges-header">
-                <h1>Challenges</h1>
-                <p>Practice small interactive exercises and pattern challenges.</p>
-                <button
-                    onClick={StartGame}
-                    className="capital-game__reset"
-                >
+             <h1>Challenges</h1>
+            <header className="challenges-header">    
+                <button onClick={() => StartGame('countryCapital')}>
                     Start Country-Capital Matching Game
                 </button>
+                <button onClick={() => StartGame('likeDislike')}>
+                    Start Like-Dislike Game
+                </button>
+                <button onClick={() => StartGame('showHideMenu')}>
+                    Start Show/Hide Menu Challenge
+                </button>
+                <button onClick={() => StartGame('multiStepForm')}>
+                    Start Multi-Step Form Challenge
+                </button>
+                <button onClick={() => StartGame('debouncedSearch')}>
+                    Start Debounced Search Challenge
+                </button>
+                <button onClick={() => StartGame('productCatalog')}>
+                    Start Product Catalog Challenge
+                </button>
             </header>
-            {gameStarted && (
+            {gameStarted.likeDislike && (
                 <>
-                    <h3>Like-Dislike game</h3>
-                    <LikeDislike initialLikes={100} initialDislikes={20} />
-                    <h3>Country-Capital Matching Game</h3>
-                    <CountryCapitalGame />
+                    <div className="game-container">
+                        <h3>Like-Dislike game</h3>
+                        <LikeDislike initialLikes={100} initialDislikes={20} />
+                    </div>
                     <hr />
-                    <h3>Show/Hide Menu</h3>
-                    <DynamicMenu menuStructure={menuData} />
+                </>
+            )}
+            {gameStarted.countryCapital && (
+                <>
+                    <div className="game-container">
+                        <h3>Country-Capital Matching Game</h3>
+                        <CountryCapitalGame />
+                    </div>
                     <hr />
-                    <h3>Multi-Step Form</h3>
-                    <SignupWizard />
-                    <p>Note: The Multi-Step Form is a simple example of a form wizard with basic validation. It demonstrates how to manage state across multiple steps and validate user input before proceeding.</p>
-                    <p>Feel free to explore the other challenges as well!</p>
+                </>
+            )}
+            {gameStarted.showHideMenu && (
+                <>
+                    <div className="game-container">
+                        <h3>Show/Hide Menu</h3>
+                        <DynamicMenu />
+                    </div>
                     <hr />
+                </>
+            )}
+            {gameStarted.multiStepForm && (
+                <>
+                    <div className="game-container">
+                        <h3>Multi-Step Form</h3>
+                        <SignupWizard />
+                        <p>Note: The Multi-Step Form is a simple example of a form wizard with basic validation. It demonstrates how to manage state across multiple steps and validate user input before proceeding.</p>
+                        <p>Feel free to explore the other challenges as well!</p>
+                    </div>
+                    <hr />
+                </>
+            )}
+            {gameStarted.debouncedSearch && (
+                <div className="game-container">
                     <h3>Debounced Search</h3>
                     <p>Note: The Debounced Search is a simple example of a search input that waits for the user to stop typing before making an API call. It demonstrates how to manage state and side effects in React using hooks.</p>
                     <DebouncedSearch />
+                </div>
+            )}
+            {gameStarted.productCatalog && (
+                <>
+                    <hr />
+                    <div className="game-container">
+                        <h3>Product Catalog</h3>
+                        <ProductCatalog />
+                    </div>
                 </>
             )}
         </section>
     );
 };
-
-const menuData = [
-    {
-        id: 'home',
-        label: 'Home',
-        url: '/home'
-    },
-    {
-        id: 'services',
-        label: 'Our Services',
-        children: [
-            { id: 'web-dev', label: 'Web Development', url: '/services/web' },
-            { id: 'design', label: 'UI/UX Design', url: '/services/design' },
-            {
-                id: 'marketing',
-                label: 'Digital Marketing',
-                children: [
-                    { id: 'seo', label: 'SEO Optimization', url: '/services/marketing/seo' },
-                    { id: 'social', label: 'Social Media', url: '/services/marketing/social' }
-                ]
-            }
-        ]
-    },
-    {
-        id: 'about',
-        label: 'About Us',
-        url: '/about'
-    }
-];
-
-
-
-
-
-
 export default Challenges;

@@ -5,7 +5,7 @@
 }
 
 .challenges-header {
-  display: grid;
+  display: flex;
   gap: 8px;
   padding: 24px;
   border: 1px solid var(--border);
@@ -34,7 +34,7 @@
 .capital-game__panel,
 .search-container,
 .menu-wrapper, 
-.wizard-container {
+.wizard-container,.catalog-layout,.game-container {
   width: min(100%);
   padding: 24px;
   border: 1px solid var(--border);

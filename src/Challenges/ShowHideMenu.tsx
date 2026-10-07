@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
+
 // Wrapper / Main Menu Component
-export default function DynamicMenu({ menuStructure }: { menuStructure: any[] }) {
+export default function DynamicMenu() {
   return (
     <nav className="menu-wrapper" style={{ fontFamily: 'sans-serif', maxWidth: '300px' }}>
-      <MenuList items={menuStructure} />
+      <MenuList items={menuData} />
     </nav>
   );
 }
@@ -76,3 +77,32 @@ function MenuItem({ item }: { item: any }) {
     </li>
   );
 }
+
+const menuData = [
+    {
+        id: 'home',
+        label: 'Home',
+        url: '/home'
+    },
+    {
+        id: 'services',
+        label: 'Our Services',
+        children: [
+            { id: 'web-dev', label: 'Web Development', url: '/services/web' },
+            { id: 'design', label: 'UI/UX Design', url: '/services/design' },
+            {
+                id: 'marketing',
+                label: 'Digital Marketing',
+                children: [
+                    { id: 'seo', label: 'SEO Optimization', url: '/services/marketing/seo' },
+                    { id: 'social', label: 'Social Media', url: '/services/marketing/social' }
+                ]
+            }
+        ]
+    },
+    {
+        id: 'about',
+        label: 'About Us',
+        url: '/about'
+    }
+];
