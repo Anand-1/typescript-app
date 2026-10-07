@@ -1,0 +1,259 @@
+.challenges-page {
+  display: grid;
+  gap: 18px;
+  text-align: left;
+}
+
+.challenges-header {
+  display: grid;
+  gap: 8px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.challenges-header h1,
+.challenges-header p,
+.capital-game h2,
+.capital-game p {
+  margin: 0;
+}
+
+.challenges-header p,
+.capital-game__topbar p {
+  color: var(--muted);
+}
+
+.capital-game {
+  display: flex;
+  justify-content: center;
+}
+
+.capital-game__panel {
+  width: min(100%);
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.capital-game__topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.capital-game__topbar h2 {
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+.capital-game__topbar p {
+  margin-top: 6px;
+}
+
+.capital-game__score {
+  min-width: 96px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-muted);
+  text-align: right;
+}
+
+.capital-game__score span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.capital-game__score strong {
+  display: block;
+  margin-top: 2px;
+  color: var(--success);
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 22px;
+}
+
+.capital-game__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.capital-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: #ffffff;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: anywhere;
+  box-shadow: 0 8px 20px rgba(23, 32, 51, 0.05);
+}
+
+.capital-card[data-card-type="country"] {
+  border-left: 4px solid var(--primary);
+}
+
+.capital-card[data-card-type="capital"] {
+  border-left: 4px solid var(--success);
+}
+
+.capital-card:hover,
+.capital-card:focus-visible {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+}
+
+.capital-card--selected,
+.capital-card--selected:hover,
+.capital-card--selected:focus-visible {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(49, 95, 186, 0.22);
+  transform: translateY(-1px);
+}
+
+.capital-card--matched,
+.capital-card--matched:hover {
+  border-color: rgba(31, 122, 77, 0.36);
+  background: rgba(31, 122, 77, 0.1);
+  color: rgba(31, 122, 77, 0.78);
+  cursor: not-allowed;
+  text-decoration: line-through;
+  transform: none;
+  box-shadow: none;
+}
+
+.capital-card--wrong,
+.capital-card--wrong:hover,
+.capital-card--wrong:focus-visible {
+  border-color: #b42318;
+  background: #fff1f0;
+  color: #912018;
+  animation: capital-card-shake 260ms ease-in-out;
+}
+
+.capital-game__victory {
+  padding: 28px 12px;
+  text-align: center;
+  animation: capital-game-fade-in 180ms ease-out;
+}
+
+.capital-game__trophy {
+  margin-bottom: 8px;
+  font-size: 56px;
+  line-height: 1;
+}
+
+.capital-game__victory h2 {
+  color: var(--success);
+  font-size: 28px;
+}
+
+.capital-game__victory p {
+  margin: 10px auto 22px;
+  max-width: 420px;
+  color: var(--muted);
+}
+
+.capital-game__victory strong {
+  color: var(--success);
+}
+
+.capital-game__primary-action,
+.capital-game__reset {
+  width: 100%;
+}
+
+.capital-game__primary-action {
+  width: auto;
+  min-width: 140px;
+  border-color: var(--success);
+  background: var(--success);
+}
+
+.capital-game__primary-action:hover,
+.capital-game__primary-action:focus-visible {
+  border-color: #145c3a;
+  background: #145c3a;
+}
+
+.capital-game__reset {
+  margin-top: 18px;
+  border-color: var(--border-strong);
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.capital-game__reset:hover,
+.capital-game__reset:focus-visible {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+}
+
+@keyframes capital-card-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  30% {
+    transform: translateX(-4px);
+  }
+
+  60% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes capital-game-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .capital-game__panel,
+  .challenges-header {
+    padding: 18px;
+  }
+
+  .capital-game__topbar {
+    display: grid;
+  }
+
+  .capital-game__score {
+    width: 100%;
+    text-align: left;
+  }
+
+  .capital-game__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

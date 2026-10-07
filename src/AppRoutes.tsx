@@ -25,6 +25,7 @@ import Persons from "./ReactPatterns/HOC/PersonHOC/Persons";
 import ProductsListWithSearch from "./ReactPatterns/HOC/ProductHOC/SearchCard";
 import AssumptionsEntry from "./AssumptionsDaily/AssumptionsEntry";
 import GraphQLExample from "./GraphQL/GraphQLExample";
+import Challenges from "./Challenges/Challenges";
 
 // Typed route configuration pattern: each route owns the URL segment, display
 // label, element, and optional nested child routes in one reusable structure.
@@ -85,4 +86,5 @@ export const appRoutes: AppRoute[] = [
   { path: "/imageSlider", label: "Image Carousel", element: <ImageSlider /> },
   { path: "/genericCarousel", label: "Generic Carousel", element: <GenericCarouselDemo /> },
   { path: "/assumptions", label: "Assumptions Form", element: <AssumptionsEntry /> },
+  { path: "/challenges", label: "Challenges", element: <Challenges /> }
 ];
