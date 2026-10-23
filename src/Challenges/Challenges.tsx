@@ -18,11 +18,11 @@ const startGame = {
 
 const Challenges = () => {
     const [gameStarted, setGameStarted] = useState(startGame);
-    const StartGame = (gameType: keyof typeof startGame) => {
-        setGameStarted(prev => ({
-            ...prev,
-            [gameType]: true
-        }));
+    const StartGame = (gameType:any) => {
+        setGameStarted(startGame);
+        setGameStarted(
+        (prevState) => ({ ...prevState, [gameType]: true })
+        );
     }
     return (
         <section className="challenges-page">
