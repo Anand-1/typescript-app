@@ -26,7 +26,6 @@ const Challenges = () => {
     }
     return (
         <section className="challenges-page">
-             <h1>Challenges</h1>
             <header className="challenges-header">    
                 <button onClick={() => StartGame('countryCapital')}>
                     Start Country-Capital Matching Game
